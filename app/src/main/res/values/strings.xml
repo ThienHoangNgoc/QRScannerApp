@@ -1,6 +1,10 @@
 <resources>
     <string name="app_name">EL Event</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+
+    <!-- Start menu strings  -->
+    <string name="title_start">Start</string>
+    <string name="title_info">Info</string>
+    <string name="title_game">Spiel</string>
+    <string name="title_map">Karte</string>
+    <string name="title_imprint">Impressum</string>
 </resources>

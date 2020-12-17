@@ -1,16 +1,16 @@
-package com.example.elevent.ui.dashboard;
+package com.example.elevent.ui.imprint;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class DashboardViewModel extends ViewModel {
+public class ImprintViewModel extends ViewModel {
 
     private MutableLiveData<String> mText;
 
-    public DashboardViewModel() {
+    public ImprintViewModel() {
         mText = new MutableLiveData<>();
-        mText.setValue("This is dashboard fragment");
+        mText.setValue("This is info fragment");
     }
 
     public LiveData<String> getText() {
