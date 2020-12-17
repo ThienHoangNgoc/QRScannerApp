@@ -10,7 +10,7 @@ public class GameViewModel extends ViewModel {
 
     public GameViewModel() {
         mText = new MutableLiveData<>();
-        mText.setValue("This is info fragment");
+        mText.setValue("This is game fragment");
     }
 
     public LiveData<String> getText() {

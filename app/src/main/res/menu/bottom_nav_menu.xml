@@ -8,7 +8,7 @@
 
     <item
         android:id="@+id/navigation_info"
-        android:icon="@drawable/icon_infos"
+        android:icon="@drawable/icon_info"
         android:title="@string/title_info" />
 
     <item
@@ -23,7 +23,7 @@
 
     <item
         android:id="@+id/navigation_imprint"
-        android:icon="@drawable/icon_start"
+        android:icon="@drawable/icon_imprint"
         android:title="@string/title_imprint" />
 
 </menu>
