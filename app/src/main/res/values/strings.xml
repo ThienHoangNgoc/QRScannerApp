@@ -21,4 +21,15 @@
     <string name="map_subtitle_02">JAGD</string>
     <string name="imprint_title">IMPRESSUM &amp; DATENSCHUTZLINIEN</string>
     <string name="imprint_subtitle"></string>
+
+
+    <!-- Imprint Fragment -->
+    <string name="imprint_header_text_01">IMPRESSUM</string>
+    <string name="imprint_header_text_02">DATENSCHUTZLINIEN</string>
+    <string name="imprint_text_01">Oberstufenzentrum Druck- und Medientechnik \nCyclopstr. 1-5 \n13437 Berlin (Wittenau) \n\nTel.: (030) 41 47 92 - 0 \nFax: (030) 41 47 92 - 21 \n\nE-Mail: litfass[at]ernst-litfass-schule.de</string>
+    <string name="imprint_text_02">Angaben gemäß § 5 TMG \n Die Ernst-Litfaß-Schule ist eine nicht rechtsfähige Anstalt (Schulgesetz für das Land Berlin (Schulgesetz - SchulG) §7 (1)) \n\nTräger: \n\nSenatsverwaltung für Bildung, Jugend und Familie \nBernhard-Weiß-Straße 6 \n10178 Berlin
+</string>
+
+
+
 </resources>

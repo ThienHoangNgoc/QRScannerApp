@@ -6,17 +6,105 @@
     android:layout_height="match_parent"
     tools:context=".ui.imprint.ImprintFragment">
 
-    <TextView
-        android:id="@+id/text_imprint"
-        android:layout_width="match_parent"
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/v_guide_line_01"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.05" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/v_guide_line_02"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.95" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/h_guide_line_01"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.1" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/h_guide_line_02"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.12" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/h_guide_line_03"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.5" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/h_guide_line_04"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.52" />
+
+    <TextView
+        android:id="@+id/imprint_header_01"
+        style="@style/imprintHeaderText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/imprint_header_text_01"
+        android:textColor="@android:color/black"
+        app:layout_constraintBottom_toTopOf="@id/h_guide_line_01"
+        app:layout_constraintLeft_toLeftOf="@id/v_guide_line_01" />
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="@dimen/imprint_underscore_size"
+        android:background="@color/main_background_color"
+        app:layout_constraintLeft_toLeftOf="@id/imprint_header_01"
+        app:layout_constraintRight_toRightOf="@id/imprint_header_01"
+        app:layout_constraintTop_toTopOf="@id/h_guide_line_01" />
+
+    <TextView
+        android:id="@+id/imprint_text_01"
+        style="@style/imprintText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/imprint_text_01"
+        android:textColor="@android:color/black"
+        app:layout_constraintLeft_toLeftOf="@id/v_guide_line_01"
+        app:layout_constraintRight_toRightOf="@id/v_guide_line_02"
+        app:layout_constraintTop_toTopOf="@id/h_guide_line_02" />
+
+    <TextView
+        android:id="@+id/imprint_header_02"
+        style="@style/imprintHeaderText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/imprint_header_text_02"
+        android:textColor="@android:color/black"
+        app:layout_constraintLeft_toLeftOf="@id/v_guide_line_01"
+        app:layout_constraintBottom_toTopOf="@id/h_guide_line_03" />
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="@dimen/imprint_underscore_size"
+        android:background="@color/main_background_color"
+        app:layout_constraintLeft_toLeftOf="@id/imprint_header_02"
+        app:layout_constraintRight_toRightOf="@id/imprint_header_02"
+        app:layout_constraintTop_toTopOf="@id/h_guide_line_03" />
+
+    <TextView
+        android:id="@+id/imprint_text_02"
+        style="@style/imprintText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/imprint_text_02"
+        android:textColor="@android:color/black"
+        app:layout_constraintLeft_toLeftOf="@id/v_guide_line_01"
+        app:layout_constraintRight_toRightOf="@id/v_guide_line_02"
+        app:layout_constraintTop_toTopOf="@id/h_guide_line_04" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

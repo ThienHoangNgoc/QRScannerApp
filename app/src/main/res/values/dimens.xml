@@ -14,4 +14,9 @@
     <dimen name="design_bottom_navigation_text_size" tools:override="true">11sp</dimen>
     <dimen name="design_bottom_navigation_active_text_size" tools:override="true">13sp</dimen>
 
+    <!-- imprint Fragment -->
+    <dimen name="imprint_header_text_size">35sp</dimen>
+    <dimen name="imprint_text_size">18sp</dimen>
+    <dimen name="imprint_underscore_size">4dp</dimen>
+
 </resources>

@@ -32,4 +32,16 @@
         <item name="android:layout_width">0dp</item>
     </style>
 
+    <!-- imprint header -->
+    <style name="imprintHeaderText" parent="Widget.AppCompat.TextView">
+        <item name="android:textColor">@android:color/black</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">@dimen/imprint_header_text_size</item>
+    </style>
+
+    <style name="imprintText" parent="Widget.AppCompat.TextView">
+        <item name="android:textColor">@android:color/black</item>
+        <item name="android:textSize">@dimen/imprint_text_size</item>
+    </style>
+
 </resources>

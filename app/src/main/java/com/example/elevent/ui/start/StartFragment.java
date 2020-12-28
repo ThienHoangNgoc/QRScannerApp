@@ -43,7 +43,7 @@ public class StartFragment extends Fragment {
                 Utils.getStringFromResource(R.string.game_subtitle, getActivity()),
                 new GameFragment()
         );
-
+        //TODO: fragment transition is still faulty
         setupClickListener(root.findViewById(R.id.map_btn_layout),new MapFragment());
         setupClickListener(root.findViewById(R.id.imprint_btn_layout),new ImprintFragment());
 
