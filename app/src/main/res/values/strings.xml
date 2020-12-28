@@ -7,4 +7,18 @@
     <string name="title_game">Spiel</string>
     <string name="title_map">Karte</string>
     <string name="title_imprint">Impressum</string>
+
+
+    <!-- Start Fragment -->
+    <string name="banner_title">WILLKOMMEN</string>
+    <string name="banner_subtitle">Zur Neueröffnung</string>
+    <string name="info_title">INFOS</string>
+    <string name="info_subtitle">Zu den LIVE Acts</string>
+    <string name="game_title">GEWINNSPIEL</string>
+    <string name="game_subtitle">BEWEIS DEIN WISSEN</string>
+    <string name="map_title">MAP</string>
+    <string name="map_subtitle_01">SCHNITZEL</string>
+    <string name="map_subtitle_02">JAGD</string>
+    <string name="imprint_title">IMPRESSUM &amp; DATENSCHUTZLINIEN</string>
+    <string name="imprint_subtitle"></string>
 </resources>

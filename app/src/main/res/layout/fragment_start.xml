@@ -4,19 +4,208 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="?android:windowBackground"
     tools:context=".ui.start.StartFragment">
 
-    <TextView
-        android:id="@+id/text_start"
-        android:layout_width="match_parent"
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/h_guide_line_01"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.3" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/h_guide_line_02"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.35" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/h_guide_line_03"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.5" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/h_guide_line_04"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.52" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/h_guide_line_05"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.67" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/h_guide_line_06"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.69" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/h_guide_line_07"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.875" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/v_guide_line_01"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.10" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/v_guide_line_02"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.90" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/inner_v_guide_line_01"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.35" />
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/inner_v_guide_line_02"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.40" />
+
+
+    <LinearLayout
+        android:id="@+id/home_banner_layout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/welcome_img"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="@id/h_guide_line_01"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/banner_title"
+            style="@style/titleText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/banner_title" />
+
+        <TextView
+            android:id="@+id/banner_subtitle"
+            style="@style/subtitleText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/banner_subtitle" />
+
+    </LinearLayout>
+
+    <androidx.cardview.widget.CardView
+        style="@style/buttonCardView"
+        app:layout_constraintBottom_toBottomOf="@id/h_guide_line_03"
+        app:layout_constraintLeft_toLeftOf="@id/v_guide_line_01"
+        app:layout_constraintRight_toRightOf="@id/v_guide_line_02"
+        app:layout_constraintTop_toTopOf="@id/h_guide_line_02">
+
+        <include
+            android:id="@+id/info_btn_layout"
+            layout="@layout/start_button_layout" />
+
+    </androidx.cardview.widget.CardView>
+
+
+    <androidx.cardview.widget.CardView
+        style="@style/buttonCardView"
+        app:layout_constraintBottom_toBottomOf="@id/h_guide_line_05"
+        app:layout_constraintLeft_toLeftOf="@id/v_guide_line_01"
+        app:layout_constraintRight_toRightOf="@id/v_guide_line_02"
+        app:layout_constraintTop_toTopOf="@id/h_guide_line_04">
+
+        <include
+            android:id="@+id/game_btn_layout"
+            layout="@layout/start_button_layout" />
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        style="@style/buttonCardView"
+        app:layout_constraintBottom_toBottomOf="@id/h_guide_line_07"
+        app:layout_constraintLeft_toLeftOf="@id/v_guide_line_01"
+        app:layout_constraintRight_toRightOf="@id/inner_v_guide_line_01"
+        app:layout_constraintTop_toTopOf="@id/h_guide_line_06">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:background="@drawable/map_btn"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/titleText"
+                android:text="@string/map_title"
+                android:textSize="@dimen/title_text_size"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                style="@style/subtitleText"
+                android:text="@string/map_subtitle_01"
+                android:textSize="@dimen/map_subtitle_text_size"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                style="@style/subtitleText"
+                android:text="@string/map_subtitle_02"
+                android:textSize="@dimen/map_subtitle_text_size"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        style="@style/buttonCardView"
+        app:layout_constraintBottom_toBottomOf="@id/h_guide_line_07"
+        app:layout_constraintLeft_toLeftOf="@id/inner_v_guide_line_02"
+        app:layout_constraintRight_toRightOf="@id/v_guide_line_02"
+        app:layout_constraintTop_toTopOf="@id/h_guide_line_06">
+
+        <LinearLayout
+            android:id="@+id/imprint_btn_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:background="@drawable/imprint_btn"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/titleText"
+                android:text="@string/imprint_title"
+                android:textSize="@dimen/imprint_title_text_size"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

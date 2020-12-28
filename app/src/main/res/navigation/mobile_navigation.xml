@@ -8,13 +8,11 @@
     <fragment
         android:id="@+id/navigation_start"
         android:name="com.example.elevent.ui.start.StartFragment"
-        android:label="@string/title_start"
         tools:layout="@layout/fragment_start" />
 
     <fragment
         android:id="@+id/navigation_info"
         android:name="com.example.elevent.ui.info.InfoFragment"
-        android:label="@string/title_info"
         tools:layout="@layout/fragment_info" />
 
     <fragment
@@ -26,12 +24,10 @@
     <fragment
         android:id="@+id/navigation_map"
         android:name="com.example.elevent.ui.map.MapFragment"
-        android:label="@string/title_map"
         tools:layout="@layout/fragment_map" />
 
     <fragment
         android:id="@+id/navigation_imprint"
         android:name="com.example.elevent.ui.imprint.ImprintFragment"
-        android:label="@string/title_imprint"
         tools:layout="@layout/fragment_imprint" />
 </navigation>
