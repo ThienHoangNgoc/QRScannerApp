@@ -43,7 +43,8 @@ public class StartFragment extends Fragment {
                 Utils.getStringFromResource(R.string.game_subtitle, getActivity()),
                 new GameFragment()
         );
-        //TODO: fragment transition is still faulty
+        //TODO: fragment transition is still faulty. Im hintergrund laufen noch die Fragments
+        //TODO: Wenn man über den Startscreen auf ein anderes Fragment geht, wird es unten auf der navbar nicht angezeigt
         setupClickListener(root.findViewById(R.id.map_btn_layout),new MapFragment());
         setupClickListener(root.findViewById(R.id.imprint_btn_layout),new ImprintFragment());
 
