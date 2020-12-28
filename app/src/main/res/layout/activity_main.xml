@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="0dp"
         android:layout_marginEnd="0dp"
-        app:itemTextColor="@android:color/white"
+        app:itemTextColor="@color/nav_item_color_state"
         android:background="@color/main_background_color"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"

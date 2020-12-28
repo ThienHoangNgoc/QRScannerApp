@@ -149,6 +149,7 @@
         app:layout_constraintTop_toTopOf="@id/h_guide_line_06">
 
         <LinearLayout
+            android:id="@+id/map_btn_layout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"

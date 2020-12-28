@@ -30,40 +30,46 @@ public class StartFragment extends Fragment {
 
         setupStartButton(root,
                 R.id.info_btn_layout,
-                getActivity(),
                 R.drawable.info_btn,
-                Utils.getStringFromResource(R.string.info_title,getActivity()),
-                Utils.getStringFromResource(R.string.info_subtitle,getActivity()),
+                Utils.getStringFromResource(R.string.info_title, getActivity()),
+                Utils.getStringFromResource(R.string.info_subtitle, getActivity()),
                 new InfoFragment()
         );
 
         setupStartButton(root,
                 R.id.game_btn_layout,
-                getActivity(),
                 R.drawable.game_btn,
-                Utils.getStringFromResource(R.string.game_title,getActivity()),
-                Utils.getStringFromResource(R.string.game_subtitle,getActivity()),
+                Utils.getStringFromResource(R.string.game_title, getActivity()),
+                Utils.getStringFromResource(R.string.game_subtitle, getActivity()),
                 new GameFragment()
-                );
+        );
+
+        setupClickListener(root.findViewById(R.id.map_btn_layout),new MapFragment());
+        setupClickListener(root.findViewById(R.id.imprint_btn_layout),new ImprintFragment());
 
         return root;
     }
 
 
-    private void setupStartButton(View root, int linearLayoutID, FragmentActivity fragmentActivity, int backgroundID, String title, String subtitle, Fragment newFragment) {
-        LinearLayout layout = root.findViewById(linearLayoutID);
-        layout.setBackground(ContextCompat.getDrawable(fragmentActivity, backgroundID));
+    private void setupStartButton(View root, int linearLayoutID, int backgroundID, String title, String subtitle, Fragment destinationFragment) {
+        ViewGroup layout = root.findViewById(linearLayoutID);
+        layout.setBackground(ContextCompat.getDrawable(getActivity(), backgroundID));
         TextView titleView = layout.findViewById(R.id.title_text);
         TextView subtitleView = layout.findViewById(R.id.subtitle_text);
         titleView.setText(title);
         subtitleView.setText(subtitle);
-        layout.setOnClickListener(new View.OnClickListener() {
+        setupClickListener(layout, destinationFragment);
+    }
+
+    private void setupClickListener(ViewGroup view, Fragment destinationFragment) {
+        view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FragmentTransaction fragmentTransaction = fragmentActivity.getSupportFragmentManager().beginTransaction();
-                fragmentTransaction.replace(((ViewGroup)getView().getParent()).getId(), newFragment);
+                FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
+                fragmentTransaction.replace(((ViewGroup) getView().getParent()).getId(), destinationFragment);
                 fragmentTransaction.commit();
             }
         });
+
     }
 }
