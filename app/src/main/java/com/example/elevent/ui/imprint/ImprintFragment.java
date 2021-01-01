@@ -20,13 +20,11 @@ public class ImprintFragment extends Fragment {
         View root = inflater.inflate(R.layout.fragment_imprint, container, false);
         TextView readMoreBtn = root.findViewById(R.id.read_more_btn);
         TextView imprintText03 = root.findViewById(R.id.imprint_text_03);
-        TextView viewFiller = root.findViewById(R.id.view_filler);
         readMoreBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 imprintText03.setVisibility(View.VISIBLE);
                 readMoreBtn.setVisibility(View.GONE);
-                viewFiller.setVisibility(View.VISIBLE);
             }
         });
 

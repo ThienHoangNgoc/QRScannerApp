@@ -23,7 +23,7 @@
     <dimen name="normal_text_size">18sp</dimen>
     <dimen name="underscore_size_big">4dp</dimen>
     <dimen name="underscore_size_thin">1dp</dimen>
-    <dimen name="view_filler_height">80dp</dimen>
+    <dimen name="imprint_bottom_text_padding">30dp</dimen>
 
     <!-- info dimens -->
     <dimen name="info_label_margin">15dp</dimen>

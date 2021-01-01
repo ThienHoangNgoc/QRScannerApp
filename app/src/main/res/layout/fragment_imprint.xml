@@ -9,7 +9,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         tools:context=".ui.imprint.ImprintFragment">
 
         <androidx.constraintlayout.widget.Guideline
@@ -109,16 +109,8 @@
             android:visibility="gone"
             app:layout_constraintLeft_toLeftOf="@id/v_guide_line_01"
             app:layout_constraintRight_toRightOf="@id/v_guide_line_02"
-            app:layout_constraintTop_toBottomOf="@id/imprint_text_02" />
-
-        <TextView
-            android:id="@+id/view_filler"
-            android:layout_width="0dp"
-            android:layout_height="@dimen/view_filler_height"
-            android:visibility="gone"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/imprint_text_03" />
+            app:layout_constraintTop_toBottomOf="@id/imprint_text_02"
+            android:paddingBottom="@dimen/imprint_bottom_text_padding"/>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

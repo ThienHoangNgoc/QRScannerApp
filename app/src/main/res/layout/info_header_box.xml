@@ -1,26 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="?android:windowBackground"
-    tools:context=".ui.info.InfoFragment">
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/v_guide_line_01"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.05" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/v_guide_line_02"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.9" />
-
+    android:layout_height="wrap_content"
+    android:background="?android:windowBackground">
 
     <TextView
         android:id="@+id/info_header_01"
@@ -29,14 +12,14 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/header_top_margin"
         android:text="@string/info_title"
-        app:layout_constraintLeft_toLeftOf="@id/v_guide_line_01"
+        app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <View
         android:layout_width="0dp"
         android:layout_height="@dimen/underscore_size_big"
         android:background="@color/main_color"
-        app:layout_constraintLeft_toLeftOf="@id/info_header_01"
+        app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="@id/info_header_01"
         app:layout_constraintTop_toBottomOf="@id/info_header_01" />
 
@@ -46,7 +29,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         app:cardCornerRadius="30dp"
-        app:layout_constraintLeft_toLeftOf="@id/v_guide_line_01"
+        app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/info_header_01"
         app:strokeColor="@color/main_color"
         app:strokeWidth="1dp">
@@ -65,28 +48,27 @@
 
 
     <TextView
-        android:layout_marginLeft="15dp"
         android:id="@+id/making_off_text"
         style="@style/infoTitleText"
-        android:textSize="20dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
         android:text="@string/info_making_off"
-        app:layout_constraintVertical_chainStyle="packed"
+        android:textSize="20dp"
         app:layout_constraintBottom_toTopOf="@id/label_underscore"
         app:layout_constraintLeft_toRightOf="@id/info_label_wrapper"
-        app:layout_constraintTop_toTopOf="@id/info_label_wrapper" />
+        app:layout_constraintTop_toTopOf="@id/info_label_wrapper"
+        app:layout_constraintVertical_chainStyle="packed" />
 
     <View
         android:id="@+id/label_underscore"
         android:layout_width="0dp"
         android:layout_height="@dimen/underscore_size_thin"
         android:background="@color/main_color"
+        app:layout_constraintBottom_toBottomOf="@id/info_label_wrapper"
         app:layout_constraintLeft_toLeftOf="@id/making_off_text"
         app:layout_constraintRight_toRightOf="@id/making_off_text"
-        app:layout_constraintTop_toBottomOf="@id/making_off_text"
-        app:layout_constraintBottom_toBottomOf="@id/info_label_wrapper"/>
-
+        app:layout_constraintTop_toBottomOf="@id/making_off_text" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
