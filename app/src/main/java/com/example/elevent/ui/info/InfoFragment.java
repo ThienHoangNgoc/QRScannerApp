@@ -18,7 +18,6 @@ public class InfoFragment extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_info, container, false);
 
-        TextView textView = root.findViewById(R.id.text_info);
 
         return root;
     }

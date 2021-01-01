@@ -9,16 +9,16 @@
 
 
     <!-- Start Menu Text 01 style -->
-    <style name="titleText" parent="Widget.AppCompat.TextView">
-        <item name="android:textSize">@dimen/title_text_size</item>
+    <style name="startTitleText" parent="Widget.AppCompat.TextView">
+        <item name="android:textSize">@dimen/start_title_text_size</item>
         <item name="android:gravity">center</item>
         <item name="android:textColor">@android:color/white</item>
         <item name="android:textStyle">bold</item>
     </style>
 
     <!-- Start Menu Text 02 style -->
-    <style name="subtitleText" parent="Widget.AppCompat.TextView">
-        <item name="android:textSize">@dimen/subtitle_text_size</item>
+    <style name="startSubtitleText" parent="Widget.AppCompat.TextView">
+        <item name="android:textSize">@dimen/start_subtitle_text_size</item>
         <item name="android:gravity">center</item>
         <item name="android:paddingLeft">5dp</item>
         <item name="android:paddingRight">5dp</item>
@@ -32,16 +32,39 @@
         <item name="android:layout_width">0dp</item>
     </style>
 
-    <!-- imprint header -->
-    <style name="imprintHeaderText" parent="Widget.AppCompat.TextView">
+    <!-- header -->
+    <style name="headerText" parent="Widget.AppCompat.TextView">
         <item name="android:textColor">@android:color/black</item>
         <item name="android:textStyle">bold</item>
-        <item name="android:textSize">@dimen/imprint_header_text_size</item>
+        <item name="android:textSize">@dimen/header_text_size</item>
     </style>
 
-    <style name="imprintText" parent="Widget.AppCompat.TextView">
+    <!-- title Text -->
+    <style name="titleText" parent="Widget.AppCompat.TextView">
         <item name="android:textColor">@android:color/black</item>
-        <item name="android:textSize">@dimen/imprint_text_size</item>
+        <item name="android:textSize">@dimen/title_text_size</item>
     </style>
+
+
+    <!-- info title Text -->
+    <style name="infoTitleText" parent="Widget.AppCompat.TextView">
+        <item name="android:textColor">@color/main_color</item>
+        <item name="android:textSize">@dimen/title_text_size</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <!-- subtitle Text -->
+    <style name="subtitleText" parent="@style/normalText">
+        <item name="android:textColor">@color/main_color</item>
+        <item name="android:textSize">@dimen/normal_text_size</item>
+    </style>
+
+
+    <!-- normal Text -->
+    <style name="normalText" parent="Widget.AppCompat.TextView">
+        <item name="android:textColor">@android:color/black</item>
+        <item name="android:textSize">@dimen/normal_text_size</item>
+    </style>
+
 
 </resources>

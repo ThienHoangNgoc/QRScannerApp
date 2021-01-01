@@ -8,13 +8,13 @@
 
     <TextView
         android:id="@+id/title_text"
-        style="@style/titleText"
+        style="@style/startTitleText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
     <TextView
         android:id="@+id/subtitle_text"
-        style="@style/subtitleText"
+        style="@style/startSubtitleText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 

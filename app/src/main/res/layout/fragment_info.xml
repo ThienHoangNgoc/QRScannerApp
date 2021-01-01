@@ -7,18 +7,85 @@
     android:background="?android:windowBackground"
     tools:context=".ui.info.InfoFragment">
 
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/v_guide_line_01"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.05" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/v_guide_line_02"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.9" />
+
+
     <TextView
-        android:id="@+id/text_info"
-        android:layout_width="match_parent"
+        android:id="@+id/info_header_01"
+        style="@style/headerText"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:text="XDDDDDDDDDDDDDDDDDDDDDDDDDD"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="@dimen/header_top_margin"
+        android:text="@string/info_title"
+        app:layout_constraintLeft_toLeftOf="@id/v_guide_line_01"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="@dimen/underscore_size_big"
+        android:background="@color/main_color"
+        app:layout_constraintLeft_toLeftOf="@id/info_header_01"
+        app:layout_constraintRight_toRightOf="@id/info_header_01"
+        app:layout_constraintTop_toBottomOf="@id/info_header_01" />
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/info_label_wrapper"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        app:cardCornerRadius="30dp"
+        app:layout_constraintLeft_toLeftOf="@id/v_guide_line_01"
+        app:layout_constraintTop_toBottomOf="@id/info_header_01"
+        app:strokeColor="@color/main_color"
+        app:strokeWidth="1dp">
+
+        <TextView
+            style="@style/titleText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/info_label_margin"
+            android:layout_marginRight="@dimen/info_label_margin"
+            android:gravity="center"
+            android:text="@string/info_live_acts_label" />
+
+
+    </com.google.android.material.card.MaterialCardView>
+
+
+    <TextView
+        android:layout_marginLeft="15dp"
+        android:id="@+id/making_off_text"
+        style="@style/infoTitleText"
+        android:textSize="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/info_making_off"
+        app:layout_constraintVertical_chainStyle="packed"
+        app:layout_constraintBottom_toTopOf="@id/label_underscore"
+        app:layout_constraintLeft_toRightOf="@id/info_label_wrapper"
+        app:layout_constraintTop_toTopOf="@id/info_label_wrapper" />
+
+    <View
+        android:id="@+id/label_underscore"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/underscore_size_thin"
+        android:background="@color/main_color"
+        app:layout_constraintLeft_toLeftOf="@id/making_off_text"
+        app:layout_constraintRight_toRightOf="@id/making_off_text"
+        app:layout_constraintTop_toBottomOf="@id/making_off_text"
+        app:layout_constraintBottom_toBottomOf="@id/info_label_wrapper"/>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

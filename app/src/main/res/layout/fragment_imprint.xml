@@ -28,10 +28,10 @@
 
         <TextView
             android:id="@+id/imprint_header_01"
-            style="@style/imprintHeaderText"
+            style="@style/headerText"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="25dp"
+            android:layout_marginTop="@dimen/header_top_margin"
             android:text="@string/imprint_header_text_01"
             android:textColor="@android:color/black"
             app:layout_constraintLeft_toLeftOf="@id/v_guide_line_01"
@@ -39,7 +39,7 @@
 
         <View
             android:layout_width="0dp"
-            android:layout_height="@dimen/imprint_underscore_size"
+            android:layout_height="@dimen/underscore_size_big"
             android:background="@color/main_color"
             app:layout_constraintLeft_toLeftOf="@id/imprint_header_01"
             app:layout_constraintRight_toRightOf="@id/imprint_header_01"
@@ -47,7 +47,7 @@
 
         <TextView
             android:id="@+id/imprint_text_01"
-            style="@style/imprintText"
+            style="@style/normalText"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
@@ -59,7 +59,7 @@
 
         <TextView
             android:id="@+id/imprint_header_02"
-            style="@style/imprintHeaderText"
+            style="@style/headerText"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="45dp"
@@ -70,7 +70,7 @@
 
         <View
             android:layout_width="0dp"
-            android:layout_height="@dimen/imprint_underscore_size"
+            android:layout_height="@dimen/underscore_size_big"
             android:background="@color/main_color"
             app:layout_constraintLeft_toLeftOf="@id/imprint_header_02"
             app:layout_constraintRight_toRightOf="@id/imprint_header_02"
@@ -78,7 +78,7 @@
 
         <TextView
             android:id="@+id/imprint_text_02"
-            style="@style/imprintText"
+            style="@style/normalText"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
@@ -91,7 +91,7 @@
 
         <TextView
             android:id="@+id/read_more_btn"
-            style="@style/imprintText"
+            style="@style/normalText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/imprint_read_more"
@@ -101,7 +101,7 @@
 
         <TextView
             android:id="@+id/imprint_text_03"
-            style="@style/imprintText"
+            style="@style/normalText"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="@string/imprint_text_03"

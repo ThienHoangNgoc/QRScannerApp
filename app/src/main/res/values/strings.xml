@@ -31,4 +31,13 @@
     <string name="imprint_read_more">mehr lesen...</string>
     <string name="imprint_text_03">\nSie wird durch seinen Schulleiter Herrn Mike Förster gesetzlich vertreten. \n\nDatenschutzbeauftragter: Herr Mike Förster - E-Mail: mike.foerster[at]ernst-litfass-schule.de \n\nSchul-Nr.: 12B03 \n\nInhaltlich verantwortlich gemäß § 10 Absatz 3 MDStV (Mediendienstestaatsvertrag): Senatsverwaltung für Bildung, Wissenschaft und Forschung. \n\nTrotz sorgfältiger inhaltlicher Kontrolle übernehmen wir keine Haftung für die Inhalte externer Links. Für den Inhalt der verlinkten Seiten sind ausschließlich deren Betreiber verantwortlich. \n\nDer Betreiber dieser Seiten übernimmt keinerlei Gewähr für die Aktualität, Korrektheit, Vollständigkeit oder Qualität der bereitgestellten Informationen. Haftungsansprüche gegen ihn, welche sich auf Schäden materieller oder ideeller Art beziehen, die durch die Nutzung oder Nichtnutzung der dargebotenen Informationen bzw. durch die Nutzung fehlerhafter und unvollständiger Informationen verursacht wurden, sind grundsätzlich ausgeschlossen, sofern seitens des Betreibers nachweislich kein vorsätzliches Verschulden vorliegt.</string>
 
+
+    <!-- Info Fragment -->
+    <string name="info_header">INFOS</string>
+    <string name="info_live_acts_label">Live Acts</string>
+    <string name="info_making_off">zum Making off</string>
+    <string name="info_more">mehr...</string>
+    <string name="info_title_dummy">Luxa Burgfeld</string>
+    <string name="info_subtitle_dummy">Sport- und Industriekletterer sowie Tauchsportler</string>
+
 </resources>
