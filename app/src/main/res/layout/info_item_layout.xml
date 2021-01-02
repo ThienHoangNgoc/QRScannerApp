@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/info_item_layout_id"
+    android:layout_width="match_parent"
+    android:paddingBottom="@dimen/info_item_padding_top_and_bottom"
+    android:paddingTop="@dimen/info_item_padding_top_and_bottom"
+    android:layout_height="wrap_content">
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/v_guide_line_01"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.32" />
+
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:strokeColor="@color/main_color"
+        app:strokeWidth="2dp">
+
+        <ImageView
+            android:id="@+id/info_item_image"
+            android:layout_width="@dimen/image_width_and_height"
+            android:layout_height="@dimen/image_width_and_height"
+            android:background="@drawable/info_item_image_01" />
+
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <TextView
+        android:id="@+id/info_item_title"
+        style="@style/infoTitleText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/info_item_title_01"
+        app:layout_constraintBottom_toTopOf="@id/info_item_subtitle"
+        app:layout_constraintLeft_toLeftOf="@id/v_guide_line_01"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <View
+        android:id="@+id/label_underscore"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/underscore_size_thin"
+        android:background="@color/main_color"
+        app:layout_constraintBottom_toBottomOf="@id/info_item_title"
+        app:layout_constraintLeft_toLeftOf="@id/v_guide_line_01"
+        app:layout_constraintRight_toRightOf="@id/info_item_title"
+        app:layout_constraintTop_toBottomOf="@id/info_item_title" />
+
+    <TextView
+        android:id="@+id/info_item_subtitle"
+        style="@style/subtitleText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/info_item_subtitle_01"
+        app:layout_constraintBottom_toTopOf="@id/info_item_more_text"
+        app:layout_constraintLeft_toLeftOf="@id/v_guide_line_01"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/info_item_title" />
+
+    <TextView
+        android:id="@+id/info_item_more_text"
+        style="@style/subtitleText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/info_more"
+        app:layout_constraintBottom_toTopOf="@id/more_underscore"
+        app:layout_constraintLeft_toLeftOf="@id/v_guide_line_01"
+        app:layout_constraintTop_toBottomOf="@id/info_item_subtitle" />
+
+    <View
+        android:id="@+id/more_underscore"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/underscore_size_thin"
+        android:background="@color/main_color"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="@id/info_item_more_text"
+        app:layout_constraintRight_toRightOf="@id/info_item_more_text"
+        app:layout_constraintTop_toBottomOf="@id/info_item_more_text" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

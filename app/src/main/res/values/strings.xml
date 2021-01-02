@@ -16,7 +16,7 @@
     <string name="info_subtitle">Zu den LIVE Acts</string>
     <string name="game_title">GEWINNSPIEL</string>
     <string name="game_subtitle">BEWEIS DEIN WISSEN</string>
-    <string name="map_title">MAP</string>
+    <string name="map_title">KARTE</string>
     <string name="map_subtitle_01">SCHNITZEL</string>
     <string name="map_subtitle_02">JAGD</string>
     <string name="imprint_title">IMPRESSUM &amp; DATENSCHUTZLINIEN</string>
@@ -37,7 +37,18 @@
     <string name="info_live_acts_label">Live Acts</string>
     <string name="info_making_off">zum Making off</string>
     <string name="info_more">mehr...</string>
-    <string name="info_title_dummy">Luxa Burgfeld</string>
-    <string name="info_subtitle_dummy">Sport- und Industriekletterer sowie Tauchsportler</string>
+
+
+    <string name="info_item_title_01">Luxa Burgfeld</string>
+    <string name="info_item_subtitle_01">Sport- und Industriekletterer sowie Tauchsportler</string>
+
+    <string name="info_item_title_02">André Hobusch</string>
+    <string name="info_item_subtitle_02">Orthopädieschuhmacher und Rollstuhlbasketballer</string>
+
+    <string name="info_item_title_03">Wendy</string>
+    <string name="info_item_subtitle_03">Buchbinderin und Chinesische Kampfkunstsportlerin</string>
+
+    <string name="info_item_title_04">Charlotte Gundlach</string>
+    <string name="info_item_subtitle_04">Mediengestalterin und Drummerin</string>
 
 </resources>

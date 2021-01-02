@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:background="?android:windowBackground">
+    android:orientation="vertical">
 
     <TextView
         android:id="@+id/info_header_01"
@@ -19,7 +19,7 @@
         android:layout_width="0dp"
         android:layout_height="@dimen/underscore_size_big"
         android:background="@color/main_color"
-        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintLeft_toLeftOf="@id/info_header_01"
         app:layout_constraintRight_toRightOf="@id/info_header_01"
         app:layout_constraintTop_toBottomOf="@id/info_header_01" />
 
@@ -29,7 +29,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         app:cardCornerRadius="30dp"
-        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintLeft_toLeftOf="@id/info_label_wrapper"
         app:layout_constraintTop_toBottomOf="@id/info_header_01"
         app:strokeColor="@color/main_color"
         app:strokeWidth="1dp">
@@ -48,17 +48,16 @@
 
 
     <TextView
-        android:id="@+id/making_off_text"
+        android:id="@+id/making_off_btn"
         style="@style/infoTitleText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="15dp"
+        android:layout_marginStart="15dp"
         android:text="@string/info_making_off"
-        android:textSize="20dp"
-        app:layout_constraintBottom_toTopOf="@id/label_underscore"
+        app:layout_constraintBottom_toBottomOf="@id/info_label_wrapper"
         app:layout_constraintLeft_toRightOf="@id/info_label_wrapper"
         app:layout_constraintTop_toTopOf="@id/info_label_wrapper"
-        app:layout_constraintVertical_chainStyle="packed" />
+       />
 
     <View
         android:id="@+id/label_underscore"
@@ -66,9 +65,7 @@
         android:layout_height="@dimen/underscore_size_thin"
         android:background="@color/main_color"
         app:layout_constraintBottom_toBottomOf="@id/info_label_wrapper"
-        app:layout_constraintLeft_toLeftOf="@id/making_off_text"
-        app:layout_constraintRight_toRightOf="@id/making_off_text"
-        app:layout_constraintTop_toBottomOf="@id/making_off_text" />
-
-
+        app:layout_constraintLeft_toLeftOf="@id/making_off_btn"
+        app:layout_constraintRight_toRightOf="@id/making_off_btn"
+        app:layout_constraintTop_toBottomOf="@id/making_off_btn" />
 </androidx.constraintlayout.widget.ConstraintLayout>

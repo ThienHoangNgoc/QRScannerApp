@@ -10,6 +10,7 @@
     <dimen name="start_button_corner_radius">12dp</dimen>
     <dimen name="start_title_text_size">30dp</dimen>
     <dimen name="start_subtitle_text_size">20dp</dimen>
+    <dimen name="map_title_text_size">25dp</dimen>
     <dimen name="map_subtitle_text_size">16dp</dimen>
     <dimen name="imprint_title_text_size">18dp</dimen>
 
@@ -27,5 +28,9 @@
 
     <!-- info dimens -->
     <dimen name="info_label_margin">15dp</dimen>
+    <dimen name="info_title_text_size">20dp</dimen>
+    <dimen name="info_subtitle_text_size">15dp</dimen>
+    <dimen name="image_width_and_height">90dp</dimen>
+    <dimen name="info_item_padding_top_and_bottom">15dp</dimen>
 
 </resources>

@@ -49,14 +49,14 @@
     <!-- info title Text -->
     <style name="infoTitleText" parent="Widget.AppCompat.TextView">
         <item name="android:textColor">@color/main_color</item>
-        <item name="android:textSize">@dimen/title_text_size</item>
+        <item name="android:textSize">@dimen/info_title_text_size</item>
         <item name="android:textStyle">bold</item>
     </style>
 
     <!-- subtitle Text -->
     <style name="subtitleText" parent="@style/normalText">
         <item name="android:textColor">@color/main_color</item>
-        <item name="android:textSize">@dimen/normal_text_size</item>
+        <item name="android:textSize">@dimen/info_subtitle_text_size</item>
     </style>
 
 

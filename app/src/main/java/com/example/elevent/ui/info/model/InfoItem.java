@@ -1,4 +1,4 @@
-package com.example.elevent.ui.info;
+package com.example.elevent.ui.info.model;
 
 public class InfoItem {
 
