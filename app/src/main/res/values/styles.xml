@@ -66,5 +66,19 @@
         <item name="android:textSize">@dimen/normal_text_size</item>
     </style>
 
+    <!-- map Title Text -->
+    <style name="mapTitleText" parent="Widget.AppCompat.TextView">
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">@dimen/normal_text_size</item>
+    </style>
+
+
+    <!-- map normal Text -->
+    <style name="mapNormalText" parent="Widget.AppCompat.TextView">
+        <item name="android:textColor">@android:color/darker_gray</item>
+        <item name="android:textSize">@dimen/normal_text_size</item>
+    </style>
+
+
 
 </resources>

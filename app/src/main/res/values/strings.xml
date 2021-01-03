@@ -90,4 +90,13 @@
 
     <string name="detailed_info_error_text">Der Text konnte nicht geladen werden.</string>
 
+
+
+    <!-- Map -->
+    <string name="map_item_title_01">Live Act 1</string>
+    <string name="map_item_text_01">Schulhof XY\n15. Jan 2020\n561m von deinem Standort</string>
+    <string name="map_item_title_02">Live Act 2</string>
+    <string name="map_item_text_02">Klassenzimmer XY\n15. Jan 2020\n544m von deinem Standort</string>
+    <string name="map_go_to_info_btn">siehe Live Acts</string>
+
 </resources>

@@ -37,4 +37,11 @@
     <!-- detailed info dimens -->
     <dimen name="detailed_info_text_block_padding_and_margin">20dp</dimen>
 
+
+    <!-- map -->
+    <dimen name="location_dot_size">40dp</dimen>
+    <dimen name="map_info_box_padding">15dp</dimen>
+    <dimen name="triangle_width_height">60dp</dimen>
+    <dimen name="map_info_box_width">250dp</dimen>
+
 </resources>

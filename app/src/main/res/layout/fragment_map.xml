@@ -4,20 +4,85 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="?android:windowBackground"
     tools:context=".ui.map.MapFragment">
 
-    <TextView
-        android:id="@+id/text_map"
+    <ImageView
         android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/map_background" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/h_location_01_guideline"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.4" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/v_location_01_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.35" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/h_location_02_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.75" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/v_location_02_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.65" />
+
+
+    <Button
+        android:id="@+id/map_location_01"
+        android:layout_width="@dimen/location_dot_size"
+        android:layout_height="@dimen/location_dot_size"
+        android:background="@drawable/location_dot"
+        app:layout_constraintBottom_toBottomOf="@id/h_location_01_guideline"
+        app:layout_constraintLeft_toLeftOf="@id/v_location_01_guideline"
+        app:layout_constraintRight_toRightOf="@id/v_location_01_guideline"
+        app:layout_constraintTop_toTopOf="@id/h_location_01_guideline" />
+
+    <include
+        android:id="@+id/map_info_box_layout_01"
+        layout="@layout/location_detail_box"
+        android:layout_width="@dimen/map_info_box_width"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@id/h_location_01_guideline"
+        app:layout_constraintLeft_toLeftOf="@id/map_location_01"
+        app:layout_constraintRight_toRightOf="@id/map_location_01"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.2" />
+
+    <Button
+        android:id="@+id/map_location_02"
+        android:layout_width="@dimen/location_dot_size"
+        android:layout_height="@dimen/location_dot_size"
+        android:background="@drawable/location_dot"
+        app:layout_constraintBottom_toBottomOf="@id/h_location_02_guideline"
+        app:layout_constraintLeft_toLeftOf="@id/v_location_02_guideline"
+        app:layout_constraintRight_toRightOf="@id/v_location_02_guideline"
+        app:layout_constraintTop_toTopOf="@id/h_location_02_guideline" />
+
+    <include
+        android:id="@+id/map_info_box_layout_02"
+        layout="@layout/location_detail_box"
+        android:layout_width="@dimen/map_info_box_width"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@id/h_location_02_guideline"
+        app:layout_constraintLeft_toLeftOf="@id/map_location_02"
+        app:layout_constraintRight_toRightOf="@id/map_location_02"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.05" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
