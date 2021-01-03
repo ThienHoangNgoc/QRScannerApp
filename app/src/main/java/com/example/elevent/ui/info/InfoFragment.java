@@ -42,8 +42,7 @@ public class InfoFragment extends Fragment {
         makingOffBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Todo: new Fragment for Video
-                Utils.createToast("Show Video", getContext());
+                Utils.navigateToNewFragment(root.getContext(),R.id.navigation_making_off);
 
 
             }

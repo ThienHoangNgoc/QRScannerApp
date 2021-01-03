@@ -45,5 +45,10 @@
             app:argType="integer" />
     </fragment>
 
+    <fragment
+        android:id="@+id/navigation_making_off"
+        android:name="com.example.elevent.ui.info.MakingOffFragment"
+        tools:layout="@layout/fragment_making_off" />
+
 
 </navigation>

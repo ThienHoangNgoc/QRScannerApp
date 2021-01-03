@@ -60,7 +60,7 @@ public class DetailedInfoFragment extends Fragment {
         makingOffBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Todo: go to VideoFragment
+                Utils.navigateToNewFragment(root.getContext(), R.id.navigation_making_off);
             }
         });
 
