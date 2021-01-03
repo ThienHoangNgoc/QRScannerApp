@@ -47,6 +47,9 @@ public class StartFragment extends Fragment {
         );
 
         setupClickListener(root.findViewById(R.id.map_btn_layout), R.id.navigation_map);
+
+
+
         setupClickListener(root.findViewById(R.id.imprint_btn_layout), R.id.navigation_imprint);
 
         return root;

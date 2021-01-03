@@ -28,7 +28,7 @@ public class MakingOffFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Intent.ACTION_VIEW);
-                intent.setData(Uri.parse(Utils.getStringFromResource(R.string.making_off_link,root.getContext())));
+                intent.setData(Uri.parse(Utils.getStringFromResource(R.string.making_off_link, root.getContext())));
                 startActivity(intent);
 
             }
