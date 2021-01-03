@@ -1,5 +1,8 @@
 package com.example.elevent.ui.info.adapter;
 
+import android.app.Activity;
+import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -7,6 +10,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.elevent.R;
@@ -38,7 +43,29 @@ public class InfoAdapter extends RecyclerView.Adapter<InfoAdapter.ViewHolder> {
             layout.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Utils.createToast("open info fragment", itemView.getContext());
+                    Log.d("ADAPTER", title.getText().toString());
+                    Context context = v.getContext();
+
+                    int infoItemNumber = 0;
+                    if (getTitle().getText().toString().equals(Utils.getStringFromResource(R.string.info_item_title_01, context))) {
+                        infoItemNumber = 1;
+
+                    }
+                    if (getTitle().getText().toString().equals(Utils.getStringFromResource(R.string.info_item_title_02, context))) {
+                        infoItemNumber = 2;
+
+                    }
+                    if (getTitle().getText().toString().equals(Utils.getStringFromResource(R.string.info_item_title_03, context))) {
+                        infoItemNumber = 3;
+
+                    }
+                    if (getTitle().getText().toString().equals(Utils.getStringFromResource(R.string.info_item_title_04, context))) {
+                        infoItemNumber = 4;
+
+                    }
+
+                    Utils.passDataToNewFragment(v, infoItemNumber);
+
                 }
             });
 

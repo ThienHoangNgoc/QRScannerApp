@@ -8,6 +8,8 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -42,6 +44,8 @@ public class InfoFragment extends Fragment {
             public void onClick(View v) {
                 //Todo: new Fragment for Video
                 Utils.createToast("Show Video", getContext());
+
+
             }
         });
 
@@ -63,18 +67,18 @@ public class InfoFragment extends Fragment {
                 Utils.getStringFromResource(R.string.info_item_subtitle_04, getContext()),
                 R.drawable.info_item_image_04);
 
-        dataSet.add(infoItem_01);
-        dataSet.add(infoItem_02);
-        dataSet.add(infoItem_03);
-        dataSet.add(infoItem_04);
+        //prevent adding the dataSet every time this fragment is created --> list with duplicate entries (not wanted ones)
+        if (dataSet.size() == 0) {
+            dataSet.add(infoItem_01);
+            dataSet.add(infoItem_02);
+            dataSet.add(infoItem_03);
+            dataSet.add(infoItem_04);
 
-        dataSet.add(infoItem_01);
-        dataSet.add(infoItem_02);
-        dataSet.add(infoItem_03);
-        dataSet.add(infoItem_04);
-
-
-
+            dataSet.add(infoItem_01);
+            dataSet.add(infoItem_02);
+            dataSet.add(infoItem_03);
+            dataSet.add(infoItem_04);
+        }
 
 
     }

@@ -47,7 +47,7 @@ public class StartFragment extends Fragment {
         );
 
         setupClickListener(root.findViewById(R.id.map_btn_layout), R.id.navigation_map);
-        setupClickListener(root.findViewById(R.id.imprint_btn_layout),R.id.navigation_imprint);
+        setupClickListener(root.findViewById(R.id.imprint_btn_layout), R.id.navigation_imprint);
 
         return root;
     }
@@ -67,8 +67,7 @@ public class StartFragment extends Fragment {
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                NavController navController = Navigation.findNavController(requireActivity(),R.id.nav_host_fragment);
-                navController.navigate(fragmentID);
+                Utils.navigateToNewFragment(requireActivity(), fragmentID);
             }
         });
 
