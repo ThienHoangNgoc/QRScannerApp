@@ -1,14 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/v_guide_line_01"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.05" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/v_guide_line_02"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.95" />
+
 
     <TextView
-        android:id="@+id/dummy_text_making_off"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:text="show video here." />
+        android:id="@+id/making_off_header"
+        style="@style/headerText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/header_top_margin"
+        android:text="@string/making_off_header_title"
+        app:layout_constraintLeft_toLeftOf="@id/v_guide_line_01"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/making_off_header_underscore"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/underscore_size_big"
+        android:background="@color/main_color"
+        app:layout_constraintLeft_toLeftOf="@id/making_off_header"
+        app:layout_constraintRight_toRightOf="@id/making_off_header"
+        app:layout_constraintTop_toBottomOf="@id/making_off_header" />
+
+
+    <TextView
+        android:id="@+id/making_off_title"
+        style="@style/normalText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/making_off_title"
+        app:layout_constraintLeft_toLeftOf="@id/v_guide_line_01"
+        app:layout_constraintTop_toBottomOf="@id/making_off_header"
+        app:layout_constraintRight_toRightOf="@id/v_guide_line_02"/>
+
+    <Button
+        android:id="@+id/play_making_off_btn"
+        android:layout_marginTop="@dimen/header_top_margin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/making_off_image"
+        app:layout_constraintLeft_toLeftOf="@id/v_guide_line_01"
+        app:layout_constraintRight_toRightOf="@id/v_guide_line_02"
+        app:layout_constraintTop_toBottomOf="@id/making_off_title"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

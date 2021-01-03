@@ -90,7 +90,10 @@
 
     <string name="detailed_info_error_text">Der Text konnte nicht geladen werden.</string>
 
-
+    <!-- making off -->
+    <string name="making_off_header_title">MAKING OFF</string>
+    <string name="making_off_title">Hier eine Zusammenfassung aller Sportarten.</string>
+    <string name="making_off_link">https://youtu.be/8QPIIbRvTi4</string>
 
     <!-- Map -->
     <string name="map_item_title_01">Live Act 1</string>
