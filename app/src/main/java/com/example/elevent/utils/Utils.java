@@ -25,6 +25,10 @@ public class Utils {
         return context.getResources().getString(stringID);
     }
 
+    public static CharSequence getTextFromResource(int stringID, Context context) {
+        return context.getResources().getText(stringID);
+    }
+
     public static void createToast(String text, Context context) {
         Toast.makeText(context, text, Toast.LENGTH_LONG).show();
     }

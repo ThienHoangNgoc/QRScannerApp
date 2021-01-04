@@ -1,14 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <dimen name="start_title_text_size">35dp</dimen>
-    <dimen name="start_subtitle_text_size">20dp</dimen>
-    <dimen name="map_subtitle_text_size">16dp</dimen>
-    <dimen name="imprint_title_text_size">18dp</dimen>
-    <dimen name="map_title_text_size">25dp</dimen>
+
 
 
     <!-- bottom navigation view -->
     <dimen name="design_bottom_navigation_text_size" tools:override="true">11sp</dimen>
     <dimen name="design_bottom_navigation_active_text_size" tools:override="true">13sp</dimen>
+
+
+    <!-- start fragment -->
+    <dimen name="start_title_text_size">35dp</dimen>
+    <dimen name="start_subtitle_text_size">20dp</dimen>
+    <dimen name="imprint_title_text_size">16dp</dimen>
+    <dimen name="map_title_text_size">25dp</dimen>
+    <dimen name="map_subtitle_text_size">12dp</dimen>
+
+    <!-- game -->
+    <dimen name="game_description_text_size">15dp</dimen>
+    <dimen name="game_fragment_margin_top">20dp</dimen>
+    <dimen name="qr_code_size">80dp</dimen>
+    <dimen name="result_icon_size">50dp</dimen>
+    <dimen name="scan_btn_width">164dp</dimen>
+    <dimen name="scan_btn_height">26dp</dimen>
+    <dimen name="continue_btn_height">25dp</dimen>
+
 
 </resources>

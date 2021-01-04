@@ -104,10 +104,10 @@
 
     <!-- Game -->
     <string name="game_fragment_header">GEWINNSPIEL</string>
-    <string name="game_description">In diesem Gewinnspiel gibt es 10 QR-Codes.\nBeim Scannes des Codes kommt es zu einer\nFrage, errate die richtige!</string>
+    <string name="game_description">In diesem Gewinnspiel gibt es 10 QR-Codes. Beim Scannes des Codes kommt es zu einer Frage, errate die richtige!</string>
     <string name="game_progress_text_01">DU HAST</string>
     <string name="game_progress_text_02">X</string>
-    <string name="game_progress_text_03"> VON 10 FRAGEN RICHTIG BEANTWORTET</string>
+    <string name="game_progress_text_03">VON 10 FRAGEN RICHTIG BEANTWORTET</string>
     <string name="game_continue_btn_text">WEITER</string>
 
 </resources>
