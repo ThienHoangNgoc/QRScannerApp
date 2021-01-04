@@ -23,17 +23,13 @@ import com.budiyev.android.codescanner.CodeScanner;
 import com.budiyev.android.codescanner.CodeScannerView;
 import com.budiyev.android.codescanner.DecodeCallback;
 import com.example.elevent.R;
-import com.example.elevent.utils.Utils;
 import com.google.zxing.Result;
-
-import java.util.Map;
 
 
 public class QrCodeScannerFragment extends Fragment {
 
     private final int CAMERA_REQUEST_CODE = 101;
     private CodeScanner codeScanner;
-    private final String TAG = "QRCODESCANNER";
 
     @Nullable
     @Override
