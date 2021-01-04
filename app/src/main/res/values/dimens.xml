@@ -5,6 +5,7 @@
 
     <!-- general dimens -->
     <dimen name="header_top_margin">25dp</dimen>
+    <dimen name="border_width">2dp</dimen>
 
     <!-- start Fragment -->
     <dimen name="start_button_corner_radius">12dp</dimen>
@@ -43,5 +44,17 @@
     <dimen name="map_info_box_padding">15dp</dimen>
     <dimen name="triangle_width_height">60dp</dimen>
     <dimen name="map_info_box_width">250dp</dimen>
+
+
+    <!-- game -->
+    <dimen name="game_description_text_size">15dp</dimen>
+    <dimen name="game_fragment_margin_top">20dp</dimen>
+    <dimen name="qr_code_size">100dp</dimen>
+    <dimen name="result_icon_size">65dp</dimen>
+    <dimen name="scan_btn_width">164dp</dimen>
+    <dimen name="scan_btn_height">26dp</dimen>
+    <dimen name="continue_btn_height">30dp</dimen>
+
+
 
 </resources>

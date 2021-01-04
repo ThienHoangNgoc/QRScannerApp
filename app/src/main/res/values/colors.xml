@@ -18,4 +18,8 @@
     <color name="map_info_text_color">#CDCDCD</color>
     <color name="map_more_info_text_color">#489E35</color>
 
+    <!-- game -->
+    <color name="wrong_answer_icon_color">#EF2020</color>
+    <color name="right_answer_icon_color">#8CC65A</color>
+
 </resources>

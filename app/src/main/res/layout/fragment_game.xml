@@ -6,19 +6,214 @@
     android:layout_height="match_parent"
     tools:context=".ui.game.GameFragment">
 
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/v_guide_line_01"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.05" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/v_guide_line_02"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.8" />
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/v_guide_line_03"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.95" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/v_grid_guide_line_01"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.35" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/v_grid_guide_line_02"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.65" />
+
+
     <TextView
-        android:id="@+id/text_game"
-        android:layout_width="match_parent"
+        android:id="@+id/game_header_01"
+        style="@style/headerText"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:text="Wer das liest ist dumm. lol"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="@dimen/header_top_margin"
+        android:text="@string/game_fragment_header"
+        app:layout_constraintLeft_toLeftOf="@id/v_guide_line_01"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="@dimen/underscore_size_big"
+        android:background="@color/main_color"
+        app:layout_constraintLeft_toLeftOf="@id/game_header_01"
+        app:layout_constraintRight_toRightOf="@id/game_header_01"
+        app:layout_constraintTop_toBottomOf="@id/game_header_01" />
+
+    <TextView
+        android:id="@+id/game_description"
+        style="@style/normalText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/header_top_margin"
+        android:text="@string/game_description"
+        android:textSize="@dimen/game_description_text_size"
+        app:layout_constraintLeft_toLeftOf="@id/v_guide_line_01"
+        app:layout_constraintRight_toRightOf="@id/v_guide_line_02"
+        app:layout_constraintTop_toBottomOf="@id/game_header_01" />
+
+
+    <Button
+        android:id="@+id/scan_qr_code_btn"
+        android:layout_width="@dimen/scan_btn_width"
+        android:layout_height="@dimen/scan_btn_height"
+        android:layout_marginTop="@dimen/game_fragment_margin_top"
+        android:background="@drawable/qr_code_scan_btn"
+        app:layout_constraintLeft_toLeftOf="@id/v_guide_line_01"
+        app:layout_constraintTop_toBottomOf="@id/game_description" />
+
+    <include
+        android:id="@+id/qr_code_item_01"
+        layout="@layout/qr_code_item"
+        android:layout_width="@dimen/qr_code_size"
+        android:layout_height="@dimen/qr_code_size"
+        android:layout_marginTop="@dimen/game_fragment_margin_top"
+        app:layout_constraintLeft_toLeftOf="@id/v_guide_line_01"
+        app:layout_constraintRight_toRightOf="@id/v_grid_guide_line_01"
+        app:layout_constraintTop_toBottomOf="@id/scan_qr_code_btn" />
+
+    <include
+        android:id="@+id/qr_code_item_02"
+        layout="@layout/qr_code_item"
+        android:layout_width="@dimen/qr_code_size"
+        android:layout_height="@dimen/qr_code_size"
+        android:layout_marginTop="@dimen/game_fragment_margin_top"
+        app:layout_constraintLeft_toLeftOf="@id/v_grid_guide_line_01"
+        app:layout_constraintRight_toRightOf="@id/v_grid_guide_line_02"
+        app:layout_constraintTop_toBottomOf="@id/scan_qr_code_btn" />
+
+    <include
+        android:id="@+id/qr_code_item_03"
+        layout="@layout/qr_code_item"
+        android:layout_width="@dimen/qr_code_size"
+        android:layout_height="@dimen/qr_code_size"
+        android:layout_marginTop="@dimen/game_fragment_margin_top"
+        app:layout_constraintLeft_toLeftOf="@id/v_grid_guide_line_02"
+        app:layout_constraintRight_toRightOf="@id/v_guide_line_03"
+        app:layout_constraintTop_toBottomOf="@id/scan_qr_code_btn" />
+
+    <include
+        android:id="@+id/qr_code_item_04"
+        layout="@layout/qr_code_item"
+        android:layout_width="@dimen/qr_code_size"
+        android:layout_height="@dimen/qr_code_size"
+        android:layout_marginTop="@dimen/game_fragment_margin_top"
+        app:layout_constraintLeft_toLeftOf="@id/v_guide_line_01"
+        app:layout_constraintRight_toRightOf="@id/v_grid_guide_line_01"
+        app:layout_constraintTop_toBottomOf="@id/qr_code_item_01" />
+
+    <include
+        android:id="@+id/qr_code_item_05"
+        layout="@layout/qr_code_item"
+        android:layout_width="@dimen/qr_code_size"
+        android:layout_height="@dimen/qr_code_size"
+        android:layout_marginTop="@dimen/game_fragment_margin_top"
+        app:layout_constraintLeft_toLeftOf="@id/v_grid_guide_line_01"
+        app:layout_constraintRight_toRightOf="@id/v_grid_guide_line_02"
+        app:layout_constraintTop_toBottomOf="@id/qr_code_item_02" />
+
+    <include
+        android:id="@+id/qr_code_item_06"
+        layout="@layout/qr_code_item"
+        android:layout_width="@dimen/qr_code_size"
+        android:layout_height="@dimen/qr_code_size"
+        android:layout_marginTop="@dimen/game_fragment_margin_top"
+        app:layout_constraintLeft_toLeftOf="@id/v_grid_guide_line_02"
+        app:layout_constraintRight_toRightOf="@id/v_guide_line_03"
+        app:layout_constraintTop_toBottomOf="@id/qr_code_item_03" />
+
+    <include
+        android:id="@+id/qr_code_item_07"
+        layout="@layout/qr_code_item"
+        android:layout_width="@dimen/qr_code_size"
+        android:layout_height="@dimen/qr_code_size"
+        android:layout_marginTop="@dimen/game_fragment_margin_top"
+        app:layout_constraintLeft_toLeftOf="@id/v_guide_line_01"
+        app:layout_constraintRight_toRightOf="@id/v_grid_guide_line_01"
+        app:layout_constraintTop_toBottomOf="@id/qr_code_item_04" />
+
+    <include
+        android:id="@+id/qr_code_item_08"
+        layout="@layout/qr_code_item"
+        android:layout_width="@dimen/qr_code_size"
+        android:layout_height="@dimen/qr_code_size"
+        android:layout_marginTop="@dimen/game_fragment_margin_top"
+        app:layout_constraintLeft_toLeftOf="@id/v_grid_guide_line_01"
+        app:layout_constraintRight_toRightOf="@id/v_grid_guide_line_02"
+        app:layout_constraintTop_toBottomOf="@id/qr_code_item_05" />
+
+    <include
+        android:id="@+id/qr_code_item_09"
+        layout="@layout/qr_code_item"
+        android:layout_width="@dimen/qr_code_size"
+        android:layout_height="@dimen/qr_code_size"
+        android:layout_marginTop="@dimen/game_fragment_margin_top"
+        app:layout_constraintLeft_toLeftOf="@id/v_grid_guide_line_02"
+        app:layout_constraintRight_toRightOf="@id/v_guide_line_03"
+        app:layout_constraintTop_toBottomOf="@id/qr_code_item_06" />
+
+    <include
+        android:id="@+id/qr_code_item_10"
+        layout="@layout/qr_code_item"
+        android:layout_width="@dimen/qr_code_size"
+        android:layout_height="@dimen/qr_code_size"
+        android:layout_marginTop="@dimen/game_fragment_margin_top"
+        app:layout_constraintLeft_toLeftOf="@id/v_guide_line_01"
+        app:layout_constraintRight_toRightOf="@id/v_grid_guide_line_01"
+        app:layout_constraintTop_toBottomOf="@id/qr_code_item_07" />
+
+    <TextView
+        android:id="@+id/game_progress_text"
+        style="@style/normalText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@id/qr_code_item_10"
+        app:layout_constraintLeft_toLeftOf="@id/qr_code_item_08"
+        app:layout_constraintRight_toRightOf="@id/qr_code_item_09"
+        app:layout_constraintTop_toTopOf="@id/qr_code_item_10" />
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/game_continue_btn_wrapper"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:cardCornerRadius="30dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="@id/qr_code_item_09"
+        app:layout_constraintTop_toBottomOf="@id/game_progress_text"
+        app:strokeColor="@color/main_color"
+        app:strokeWidth="@dimen/border_width"
+        tools:visibility="visible">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/continue_btn_height"
+            android:background="@color/transparent"
+            android:text="@string/game_continue_btn_text" />
+
+
+    </com.google.android.material.card.MaterialCardView>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
