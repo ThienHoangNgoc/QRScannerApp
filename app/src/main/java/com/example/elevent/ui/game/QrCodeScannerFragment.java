@@ -18,11 +18,14 @@ import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 
 import com.budiyev.android.codescanner.CodeScanner;
 import com.budiyev.android.codescanner.CodeScannerView;
 import com.budiyev.android.codescanner.DecodeCallback;
 import com.example.elevent.R;
+import com.example.elevent.ui.info.InfoFragmentDirections;
+import com.example.elevent.utils.Utils;
 import com.google.zxing.Result;
 
 
@@ -37,7 +40,6 @@ public class QrCodeScannerFragment extends Fragment {
         final Activity activity = getActivity();
         View root = inflater.inflate(R.layout.fragment_qr_code_scanner, container, false);
         CodeScannerView codeScannerView = root.findViewById(R.id.code_scanner_view);
-        TextView output = root.findViewById(R.id.output_text);
         codeScanner = new CodeScanner(activity, codeScannerView);
         setupPermissions();
         codeScanner.setDecodeCallback(new DecodeCallback() {
@@ -46,7 +48,9 @@ public class QrCodeScannerFragment extends Fragment {
                 activity.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        output.setText(result.getText());
+                        QrCodeScannerFragmentDirections.OpenDialogAction action = QrCodeScannerFragmentDirections.openDialogAction();
+                        action.setQrCode(result.getText());
+                        Navigation.findNavController(root).navigate(action);
                     }
                 });
             }

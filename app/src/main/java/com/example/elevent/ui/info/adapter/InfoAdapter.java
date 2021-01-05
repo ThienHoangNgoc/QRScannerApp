@@ -10,9 +10,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.elevent.R;
+import com.example.elevent.ui.info.InfoFragmentDirections;
 import com.example.elevent.ui.info.model.InfoItem;
 import com.example.elevent.utils.Utils;
 
@@ -62,7 +64,10 @@ public class InfoAdapter extends RecyclerView.Adapter<InfoAdapter.ViewHolder> {
 
                     }
 
-                    Utils.passDataToNewFragment(v, infoItemNumber);
+                    //pass data to new Fragment and navigate to it
+                    InfoFragmentDirections.ShowMoreInfoAction action = InfoFragmentDirections.showMoreInfoAction();
+                    action.setInfoItemNumber(infoItemNumber);
+                    Navigation.findNavController(v).navigate(action);
 
                 }
             });

@@ -16,6 +16,7 @@ import androidx.fragment.app.Fragment;
 import com.example.elevent.R;
 import com.example.elevent.ui.game.room.CodeDAO;
 import com.example.elevent.ui.game.room.QrCodeItem;
+import com.example.elevent.ui.info.DetailedInfoFragmentArgs;
 import com.example.elevent.utils.Utils;
 
 import java.util.ArrayList;
@@ -32,6 +33,7 @@ public class GameFragment extends Fragment {
         //Todo: use RoomDB, create RNG order for questions, alertdialog
 
         View root = inflater.inflate(R.layout.fragment_game, container, false);
+        String qr_code_string = GameFragmentArgs.fromBundle(getArguments()).getQrCode();
         dao = Utils.getCodeDAO(root.getContext());
 
         Button scanBtn = root.findViewById(R.id.scan_qr_code_btn);
@@ -85,6 +87,7 @@ public class GameFragment extends Fragment {
         };
 
 
+        showDialog(qr_code_string, root.getContext());
         setupDataSet(root.getContext());
         setupCodeDB();
 
@@ -105,6 +108,45 @@ public class GameFragment extends Fragment {
         });
 
         return root;
+    }
+
+    private void showDialog(String qr_code_string, Context context) {
+        if (!qr_code_string.equals("QR0")) {
+            switch (qr_code_string) {
+                case "QR1":
+                    Utils.createToast("QR1", context);
+                    break;
+                case "QR2":
+                    Utils.createToast("QR2", context);
+                    break;
+                case "QR3":
+                    Utils.createToast("QR3", context);
+                    break;
+                case "QR4":
+                    Utils.createToast("QR4", context);
+                    break;
+                case "QR5":
+                    Utils.createToast("QR5", context);
+                    break;
+                case "QR6":
+                    Utils.createToast("QR6", context);
+                    break;
+                case "QR7":
+                    Utils.createToast("QR7", context);
+                    break;
+                case "QR8":
+                    Utils.createToast("QR8", context);
+                    break;
+                case "QR9":
+                    Utils.createToast("QR9", context);
+                    break;
+                case "QR10":
+                    Utils.createToast("QR10", context);
+                    break;
+                default:
+                    break;
+            }
+        }
     }
 
     private void setupDataSet(Context context) {

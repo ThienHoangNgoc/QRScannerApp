@@ -13,7 +13,7 @@
     <fragment
         android:id="@+id/navigation_info"
         android:name="com.example.elevent.ui.info.InfoFragment"
-        tools:layout="@layout/fragment_info" >
+        tools:layout="@layout/fragment_info">
         <action
             android:id="@+id/showMoreInfoAction"
             app:destination="@id/detailed_info_fragment" />
@@ -23,7 +23,13 @@
         android:id="@+id/navigation_game"
         android:name="com.example.elevent.ui.game.GameFragment"
         android:label="@string/title_game"
-        tools:layout="@layout/fragment_game" />
+        tools:layout="@layout/fragment_game">
+        <argument
+            android:name="qr_code"
+            android:defaultValue="QR0"
+            app:argType="string" />
+
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_map"
@@ -53,6 +59,10 @@
     <fragment
         android:id="@+id/navigation_qr_code_scanner"
         android:name="com.example.elevent.ui.game.QrCodeScannerFragment"
-        tools:layout="@layout/fragment_qr_code_scanner" />
+        tools:layout="@layout/fragment_qr_code_scanner">
+        <action
+            android:id="@+id/openDialogAction"
+            app:destination="@id/navigation_game" />
+    </fragment>
 
 </navigation>
