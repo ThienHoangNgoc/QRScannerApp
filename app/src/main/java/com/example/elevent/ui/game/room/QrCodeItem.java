@@ -1,22 +1,54 @@
-package com.example.elevent.ui.game;
+package com.example.elevent.ui.game.room;
 
+import androidx.annotation.NonNull;
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
+import java.util.ArrayList;
 import java.util.List;
 
+@Entity(tableName = "CodeTable")
 public class QrCodeItem {
+
+    @NonNull
+    @PrimaryKey(autoGenerate = true)
+    @ColumnInfo(name = "code_id")
+    private long id;
+
+    @ColumnInfo(name = "image_id")
     int imageID;
+
+    @ColumnInfo(name = "question")
     String question;
-    List<String> wrongAnswerList;
+
+    @ColumnInfo(name = "wrong_answer_list")
+    ArrayList<String> wrongAnswerList;
+
+    @ColumnInfo(name = "right_answer")
     String rightAnswer;
+
+    @ColumnInfo(name = "answered_status")
     boolean isAnsweredRight;
+
+    @ColumnInfo(name = "activated_status")
     boolean isActivated;
 
-    public QrCodeItem(int imageID, String question, List<String> wrongAnswerList, String rightAnswer, boolean isAnsweredRight, boolean isActivated) {
+    public QrCodeItem(int imageID, String question, ArrayList<String> wrongAnswerList, String rightAnswer, boolean isAnsweredRight, boolean isActivated) {
         this.imageID = imageID;
         this.question = question;
         this.wrongAnswerList = wrongAnswerList;
         this.rightAnswer = rightAnswer;
         this.isAnsweredRight = isAnsweredRight;
         this.isActivated = isActivated;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     public int getImageID() {
@@ -39,7 +71,7 @@ public class QrCodeItem {
         return wrongAnswerList;
     }
 
-    public void setWrongAnswerList(List<String> wrongAnswerList) {
+    public void setWrongAnswerList(ArrayList<String> wrongAnswerList) {
         this.wrongAnswerList = wrongAnswerList;
     }
 

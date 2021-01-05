@@ -63,6 +63,13 @@ dependencies {
     //QR Code Scanner
     implementation 'com.budiyev.android:code-scanner:2.1.0'
 
+    //room DB
+    implementation "android.arch.persistence.room:runtime:1.1.1"
+    annotationProcessor "android.arch.persistence.room:compiler:1.1.1"
+
+    //Gson
+    implementation 'com.google.code.gson:gson:2.6.2'
+
 
 
 

@@ -12,10 +12,16 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
 import com.example.elevent.R;
+import com.example.elevent.ui.game.room.CodeDAO;
+import com.example.elevent.ui.game.room.CodeDB;
 import com.example.elevent.ui.info.DetailedInfoFragment;
 import com.example.elevent.ui.info.DetailedInfoFragmentArgs;
 import com.example.elevent.ui.info.InfoFragment;
 import com.example.elevent.ui.info.InfoFragmentDirections;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import static com.example.elevent.ui.info.InfoFragmentDirections.*;
 
@@ -23,6 +29,10 @@ public class Utils {
 
     public static String getStringFromResource(int stringID, Context context) {
         return context.getResources().getString(stringID);
+    }
+
+    public static ArrayList<String> getStringArrayAsListFromResource(int stringArrayID, Context context) {
+        return new ArrayList<>(Arrays.asList(context.getResources().getStringArray(stringArrayID)));
     }
 
     public static CharSequence getTextFromResource(int stringID, Context context) {
@@ -44,6 +54,9 @@ public class Utils {
         Navigation.findNavController(view).navigate(action);
     }
 
+    public static CodeDAO getCodeDAO(Context context) {
+        return CodeDB.getCodeDB(context).getItemDAO();
+    }
 
 
 }

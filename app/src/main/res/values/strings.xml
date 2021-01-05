@@ -110,4 +110,100 @@
     <string name="game_progress_text_03">VON 10 FRAGEN RICHTIG BEANTWORTET</string>
     <string name="game_continue_btn_text">WEITER</string>
 
+
+
+    <!-- Game Q&A -->
+    <string name="game_question_01">Wie viele Weihnachtsbäume werden in Deutschland pro Jahr verkauft?</string>
+    <string-array name="wrong_answer_list_01">
+        <item>3 Million</item>
+        <item>20 Million</item>
+        <item>10Million</item>
+    </string-array>
+    <string name="right_answer_01">Etwa 30 Millionen</string>
+
+    <string name="game_question_02">Wie viele Liter Bier werden in Deutschland pro Kopf jährlich getrunken?</string>
+    <string-array name="wrong_answer_list_02">
+        <item>90</item>
+        <item>283</item>
+        <item>12</item>
+    </string-array>
+    <string name="right_answer_02">100</string>
+
+    <string name="game_question_03">Wie lang ist der Begattungsapparat der 15 cm langen Bananenschnecke?</string>
+    <string-array name="wrong_answer_list_03">
+        <item>90 cm</item>
+        <item>21 cm</item>
+        <item>44 cm</item>
+    </string-array>
+    <string name="right_answer_03">80 cm</string>
+
+    <string name="game_question_04">Wie viele Buchstaben hat das hawaiianische Alphabet?</string>
+    <string-array name="wrong_answer_list_04">
+        <item>13</item>
+        <item>22</item>
+        <item>34</item>
+    </string-array>
+    <string name="right_answer_04">12</string>
+
+    <string name="game_question_05">Wie viele Einkerbungen hat ein Golfball?</string>
+    <string-array name="wrong_answer_list_05">
+        <item>339</item>
+        <item>332</item>
+        <item>331</item>
+    </string-array>
+    <string name="right_answer_05">336</string>
+
+    <string name="game_question_06">Im Laufe eines 60 Jährigen Lebens hat ein Mann durchschnittliche wie lange eine Erektion während er schläft?</string>
+    <string-array name="wrong_answer_list_06">
+        <item>2 Jahre</item>
+        <item>9 Jahre</item>
+        <item>3 Jahre</item>
+    </string-array>
+    <string name="right_answer_06">5 Jahre</string>
+
+    <string name="game_question_07">Wie lange dauert der 30-jährige Krieg</string>
+    <string-array name="wrong_answer_list_07">
+        <item>29 Jahre</item>
+        <item>28 Jahre</item>
+        <item>31 Jahre</item>
+    </string-array>
+    <string name="right_answer_07">30 Jahre</string>
+
+    <string name="game_question_08">Einige Monate haben 30, einige 31 Tage. Wie viele haben 28 Tage?</string>
+    <string-array name="wrong_answer_list_08">
+        <item>27 Tage</item>
+        <item>30 Tage</item>
+        <item>31 Tage</item>
+    </string-array>
+    <string name="right_answer_08">Alle – jeder Monat hat mindestens 28 Tage</string>
+
+    <string name="game_question_09">Ein Bauer hat 16 Schafe. Fast alle sterben, außer 9. Wie viele Schafe bleiben übrig?</string>
+    <string-array name="wrong_answer_list_09">
+        <item>8 Schafe</item>
+        <item>2 Schafe</item>
+        <item>5 Schafe</item>
+    </string-array>
+    <string name="right_answer_09">9 Schafe</string>
+
+    <string name="game_question_10">Was antwortet in allen Sprachen? Was spricht ohne Mund? Was hört ohne Ohren?</string>
+    <string-array name="wrong_answer_list_10">
+        <item>der Stift</item>
+        <item>der Hals</item>
+        <item>die Füße</item>
+    </string-array>
+    <string name="right_answer_10">das Echo</string>
+
+
+
+
+    <!--
+    <string name="game_question_01"></string>
+    <string-array name="wrong_answer_list_01">
+        <item></item>
+        <item></item>
+        <item></item>
+    </string-array>
+    <string name="right_answer_01"></string>
+    -->
+
 </resources>
