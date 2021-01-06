@@ -2,6 +2,7 @@ package com.example.elevent.ui.game;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.media.Image;
 import android.os.Bundle;
 import android.text.Html;
 import android.view.LayoutInflater;
@@ -23,6 +24,7 @@ import com.example.elevent.ui.game.room.CodeDAO;
 import com.example.elevent.ui.game.room.QrCodeItem;
 import com.example.elevent.ui.info.DetailedInfoFragmentArgs;
 import com.example.elevent.utils.Utils;
+import com.google.android.material.card.MaterialCardView;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -33,8 +35,7 @@ public class GameFragment extends Fragment {
 
     List<QrCodeItem> dataSet = new ArrayList<>();
     CodeDAO dao;
-    List<QrCodeItem> dbList = new ArrayList<>();
-    List<QrCodeImageHolder> imageHolderList = new ArrayList<>();
+
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -45,7 +46,8 @@ public class GameFragment extends Fragment {
         dao = Utils.getCodeDAO(root.getContext());
 
         Button scanBtn = root.findViewById(R.id.scan_qr_code_btn);
-        TextView textView = root.findViewById(R.id.game_progress_text);
+        MaterialCardView continueBtn = root.findViewById(R.id.game_continue_btn_wrapper);
+        TextView gameProgressText = root.findViewById(R.id.game_progress_text);
         ViewGroup qr_code_item_layout_01 = root.findViewById(R.id.qr_code_item_01);
         ViewGroup qr_code_item_layout_02 = root.findViewById(R.id.qr_code_item_02);
         ViewGroup qr_code_item_layout_03 = root.findViewById(R.id.qr_code_item_03);
@@ -79,31 +81,36 @@ public class GameFragment extends Fragment {
         ImageView result_image_09 = qr_code_item_layout_09.findViewById(R.id.result_icon_image);
         ImageView result_image_10 = qr_code_item_layout_10.findViewById(R.id.result_icon_image);
 
-        imageHolderList = new ArrayList<QrCodeImageHolder>() {
-            {
-                add(new QrCodeImageHolder(qr_code_image_01, result_image_01));
-                add(new QrCodeImageHolder(qr_code_image_02, result_image_02));
-                add(new QrCodeImageHolder(qr_code_image_03, result_image_03));
-                add(new QrCodeImageHolder(qr_code_image_04, result_image_04));
-                add(new QrCodeImageHolder(qr_code_image_05, result_image_05));
-                add(new QrCodeImageHolder(qr_code_image_06, result_image_06));
-                add(new QrCodeImageHolder(qr_code_image_07, result_image_07));
-                add(new QrCodeImageHolder(qr_code_image_08, result_image_08));
-                add(new QrCodeImageHolder(qr_code_image_09, result_image_09));
-                add(new QrCodeImageHolder(qr_code_image_10, result_image_10));
-            }
-        };
-
-
-        showDialog(qr_code_string, root.getContext());
+        List<ImageView> resultImageList = new ArrayList<ImageView>() {{
+            add(result_image_01);
+            add(result_image_02);
+            add(result_image_03);
+            add(result_image_04);
+            add(result_image_05);
+            add(result_image_06);
+            add(result_image_07);
+            add(result_image_08);
+            add(result_image_09);
+            add(result_image_10);
+        }};
+        showDialog(qr_code_string, root.getContext(), resultImageList);
         setupDataSet(root.getContext());
         setupCodeDB();
 
+        qr_code_image_01.setBackgroundResource(R.drawable.qr_code_image_01);
+        qr_code_image_02.setBackgroundResource(R.drawable.qr_code_image_02);
+        qr_code_image_03.setBackgroundResource(R.drawable.qr_code_image_03);
+        qr_code_image_04.setBackgroundResource(R.drawable.qr_code_image_04);
+        qr_code_image_05.setBackgroundResource(R.drawable.qr_code_image_05);
+        qr_code_image_06.setBackgroundResource(R.drawable.qr_code_image_06);
+        qr_code_image_07.setBackgroundResource(R.drawable.qr_code_image_07);
+        qr_code_image_08.setBackgroundResource(R.drawable.qr_code_image_08);
+        qr_code_image_09.setBackgroundResource(R.drawable.qr_code_image_09);
+        qr_code_image_10.setBackgroundResource(R.drawable.qr_code_image_10);
 
-        setupQrCodeImages();
+        setupResultImage(resultImageList);
 
-
-        textView.setText(getProgressionText(root.getContext()));
+        gameProgressText.setText(getProgressionText(root.getContext()));
         scanBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -111,16 +118,23 @@ public class GameFragment extends Fragment {
             }
         });
 
+        continueBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //Todo: open dialog for price ;)
+            }
+        });
+
         return root;
     }
 
-    private void showDialog(String qr_code_string, Context context) {
+    private void showDialog(String qr_code_string, Context context, List<ImageView> list) {
         if (!qr_code_string.equals("QR0")) {
             //if the qr code is already scanned show toast
             if (dao.findItemByQrCodeNumber(qr_code_string).isScanned()) {
                 Utils.createToast(Utils.getStringFromResource(R.string.code_already_scanned_hint, context), context);
             } else {
-                createQuestionDialog(context, qr_code_string);
+                createQuestionDialog(context, qr_code_string, list);
             }
 
         }
@@ -211,17 +225,6 @@ public class GameFragment extends Fragment {
     }
 
 
-    private void setupViews(ImageView qrCode, ImageView result, QrCodeItem item) {
-        qrCode.setBackgroundResource(item.getImageID());
-        if (item.isActivated()) {
-            if (item.isAnsweredRight()) {
-                result.setBackgroundResource(R.drawable.game_right_answer_v2);
-            } else {
-                result.setBackgroundResource(R.drawable.game_wrong_answer_v2);
-            }
-        }
-    }
-
     //when there are no itmes in the db --> setup data
     private void setupCodeDB() {
         if (dao.getItems().size() == 0) {
@@ -242,11 +245,16 @@ public class GameFragment extends Fragment {
     }
 
     private int getNumberOfRightAnswers() {
-        //Todo: implement this
-        return 0;
+        int count = 0;
+        for (QrCodeItem item : dao.getItems()) {
+            if (item.isAnsweredRight()) {
+                count++;
+            }
+        }
+        return count;
     }
 
-    private void createQuestionDialog(Context context, String qr_code) {
+    private void createQuestionDialog(Context context, String qr_code, List<ImageView> list) {
         QrCodeItem item = dao.findItemByQrCodeNumber(qr_code);
         //add all answer options into a list
         ArrayList<String> answerList = (ArrayList<String>) item.getWrongAnswerList();
@@ -338,17 +346,19 @@ public class GameFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 if (checkBox_answer_01.isChecked()) {
-                    updateAnswerStatus(qr_code, answer_option_01, rightAnswer);
+                    updateAnswerStatus(qr_code, answer_option_01, rightAnswer, list);
                 } else if (checkBox_answer_02.isChecked()) {
-                    updateAnswerStatus(qr_code, answer_option_02, rightAnswer);
+                    updateAnswerStatus(qr_code, answer_option_02, rightAnswer, list);
                 } else if (checkBox_answer_03.isChecked()) {
-                    updateAnswerStatus(qr_code, answer_option_03, rightAnswer);
+                    updateAnswerStatus(qr_code, answer_option_03, rightAnswer, list);
                 } else if (checkBox_answer_04.isChecked()) {
-                    updateAnswerStatus(qr_code, answer_option_04, rightAnswer);
+                    updateAnswerStatus(qr_code, answer_option_04, rightAnswer, list);
                 } else {
                     Utils.createToast(Utils.getStringFromResource(R.string.no_answer_selected_hint, context), context);
                 }
                 dao.updateScannedStatus(true, qr_code);
+                //Todo: write method for total answered questions (doesnt matter whether right or wrong)
+                //make continue btn visible
                 dialog.cancel();
             }
         });
@@ -372,28 +382,79 @@ public class GameFragment extends Fragment {
     }
 
 
-    private void updateAnswerStatus(String qr_code, TextView view, String rightAnswer) {
+    private void updateAnswerStatus(String qr_code, TextView view, String rightAnswer, List<ImageView> list) {
         dao.updateActivatedStatus(true, qr_code);
         if (view.getText().toString().equals(rightAnswer)) {
+            changeResultImage(qr_code, list, true);
             dao.updateAnswerStatus(true, qr_code);
+
         } else {
             dao.updateAnswerStatus(false, qr_code);
+            changeResultImage(qr_code, list, false);
         }
     }
 
-    private void setupQrCodeImages() {
+    private void setupResultImage(List<ImageView> viewList) {
+        List<QrCodeItem> list = dao.getItems();
         int count = 0;
-        dbList = dao.getItems();
-        for (QrCodeItem item : dbList) {
-            setupViews(imageHolderList.get(count).getQr_code(), imageHolderList.get(count).getResult(), item);
-            count++;
+        for (QrCodeItem item : list) {
+            if (item.isActivated()) {
+                if (item.isAnsweredRight()) {
+                    viewList.get(count).setBackgroundResource(R.drawable.game_right_answer_v2);
+                } else {
+                    viewList.get(count).setBackgroundResource(R.drawable.game_wrong_answer_v2);
+                }
+            }
+
+        }
+
+    }
+
+
+    private void changeResultImage(String qrCodeText, List<ImageView> list, boolean isAnsweredRight) {
+        switch (qrCodeText) {
+            case "QR1":
+                setRightResultImage(list.get(0), isAnsweredRight);
+                break;
+            case "QR2":
+                setRightResultImage(list.get(1), isAnsweredRight);
+                break;
+            case "QR3":
+                setRightResultImage(list.get(2), isAnsweredRight);
+                break;
+            case "QR4":
+                setRightResultImage(list.get(3), isAnsweredRight);
+                break;
+            case "QR5":
+                setRightResultImage(list.get(4), isAnsweredRight);
+                break;
+            case "QR6":
+                setRightResultImage(list.get(5), isAnsweredRight);
+                break;
+            case "QR7":
+                setRightResultImage(list.get(6), isAnsweredRight);
+                break;
+            case "QR8":
+                setRightResultImage(list.get(7), isAnsweredRight);
+                break;
+            case "QR9":
+                setRightResultImage(list.get(8), isAnsweredRight);
+                break;
+            case "QR10":
+                setRightResultImage(list.get(9), isAnsweredRight);
+                break;
+            default:
+                break;
         }
     }
 
-    @Override
-    public void onResume() {
-        //Todo: reload images onChange
-        setupQrCodeImages();
-        super.onResume();
+    private void setRightResultImage(ImageView view, boolean isAnsweredRight) {
+        if (isAnsweredRight) {
+            view.setBackgroundResource(R.drawable.game_right_answer_v2);
+        } else {
+            view.setBackgroundResource(R.drawable.game_wrong_answer_v2);
+        }
+
     }
+
 }

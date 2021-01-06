@@ -197,14 +197,13 @@
         android:id="@+id/game_continue_btn_wrapper"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:visibility="visible"
+        android:visibility="invisible"
         app:cardCornerRadius="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintRight_toRightOf="@id/qr_code_item_09"
         app:layout_constraintTop_toBottomOf="@id/game_progress_text"
         app:strokeColor="@color/main_color"
-        app:strokeWidth="@dimen/border_width"
-        tools:visibility="visible">
+        app:strokeWidth="@dimen/border_width">
 
         <Button
             android:layout_width="wrap_content"
