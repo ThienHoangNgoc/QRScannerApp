@@ -12,9 +12,9 @@ import java.util.List;
 public class QrCodeItem {
 
     @NonNull
-    @PrimaryKey(autoGenerate = true)
-    @ColumnInfo(name = "code_id")
-    private long id;
+    @PrimaryKey
+    @ColumnInfo(name = "qr_code_number")
+    private String qr_code_number;
 
     @ColumnInfo(name = "image_id")
     int imageID;
@@ -28,27 +28,35 @@ public class QrCodeItem {
     @ColumnInfo(name = "right_answer")
     String rightAnswer;
 
+    //when answer is answered right --> true else false
     @ColumnInfo(name = "answered_status")
     boolean isAnsweredRight;
 
     @ColumnInfo(name = "activated_status")
     boolean isActivated;
 
-    public QrCodeItem(int imageID, String question, ArrayList<String> wrongAnswerList, String rightAnswer, boolean isAnsweredRight, boolean isActivated) {
+    @ColumnInfo(name = "scanned_status")
+
+    boolean isScanned;
+
+    public QrCodeItem(String qr_code_number, int imageID, String question, ArrayList<String> wrongAnswerList, String rightAnswer, boolean isAnsweredRight, boolean isActivated, boolean isScanned) {
+        this.qr_code_number = qr_code_number;
         this.imageID = imageID;
         this.question = question;
         this.wrongAnswerList = wrongAnswerList;
         this.rightAnswer = rightAnswer;
         this.isAnsweredRight = isAnsweredRight;
         this.isActivated = isActivated;
+        this.isScanned = isScanned;
     }
 
-    public long getId() {
-        return id;
+    @NonNull
+    public String getQr_code_number() {
+        return qr_code_number;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public void setQr_code_number(@NonNull String qr_code_number) {
+        this.qr_code_number = qr_code_number;
     }
 
     public int getImageID() {
@@ -97,5 +105,13 @@ public class QrCodeItem {
 
     public void setActivated(boolean activated) {
         isActivated = activated;
+    }
+
+    public boolean isScanned() {
+        return isScanned;
+    }
+
+    public void setScanned(boolean scanned) {
+        isScanned = scanned;
     }
 }

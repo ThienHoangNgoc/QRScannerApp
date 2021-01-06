@@ -26,16 +26,19 @@ public interface CodeDAO {
     @Query("SELECT * FROM CodeTable")
     List<QrCodeItem> getItems();
 
-    @Query("SELECT * FROM CodeTable WHERE code_id =:codeID")
-    QrCodeItem findItemByID(long codeID);
+    @Query("SELECT * FROM CodeTable WHERE qr_code_number =:qr_code_number")
+    QrCodeItem findItemByQrCodeNumber(String qr_code_number);
 
     @Query("SELECT * FROM CodeTable WHERE question =:question")
     QrCodeItem findItemByQuestion(String question);
 
-    @Query("UPDATE CodeTable SET activated_status=:activatedStatus WHERE code_id = :id")
-    void updateActivatedStatus(boolean activatedStatus, long id);
+    @Query("UPDATE CodeTable SET activated_status=:activatedStatus WHERE qr_code_number = :qr_code_number")
+    void updateActivatedStatus(boolean activatedStatus, String qr_code_number);
 
-    @Query("UPDATE CodeTable SET answered_status=:answerStatus WHERE code_id = :id")
-    void updateAnswerStatus(boolean answerStatus, long id);
+    @Query("UPDATE CodeTable SET answered_status=:answerStatus WHERE qr_code_number = :qr_code_number")
+    void updateAnswerStatus(boolean answerStatus, String qr_code_number);
+
+    @Query("UPDATE CodeTable SET scanned_status=:isScanned WHERE qr_code_number = :qr_code_number")
+    void updateScannedStatus(boolean isScanned, String qr_code_number);
 
 }

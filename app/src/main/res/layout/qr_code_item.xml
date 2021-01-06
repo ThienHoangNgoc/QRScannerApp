@@ -17,6 +17,7 @@
 
         <ImageView
             android:id="@+id/qr_code_image"
+            android:layout_gravity="center"
             android:layout_width="@dimen/qr_code_size"
             android:layout_height="@dimen/qr_code_size"
             tools:background="@drawable/qr_code_image_01" />

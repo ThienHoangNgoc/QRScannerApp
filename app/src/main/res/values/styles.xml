@@ -80,5 +80,16 @@
     </style>
 
 
+    <!-- answer option -->
+    <style name="answerOptionText" parent="Widget.AppCompat.TextView">
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">@dimen/answer_option_text_size</item>
+        <item name="android:textStyle">italic</item>
+    </style>
+
+
+
+
+
 
 </resources>

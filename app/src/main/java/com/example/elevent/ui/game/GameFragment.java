@@ -1,18 +1,23 @@
 package com.example.elevent.ui.game;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
 import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import com.example.elevent.MainActivity;
 import com.example.elevent.R;
 import com.example.elevent.ui.game.room.CodeDAO;
 import com.example.elevent.ui.game.room.QrCodeItem;
@@ -21,12 +26,15 @@ import com.example.elevent.utils.Utils;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public class GameFragment extends Fragment {
 
     List<QrCodeItem> dataSet = new ArrayList<>();
     CodeDAO dao;
+    List<QrCodeItem> dbList = new ArrayList<>();
+    List<QrCodeImageHolder> imageHolderList = new ArrayList<>();
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -71,7 +79,7 @@ public class GameFragment extends Fragment {
         ImageView result_image_09 = qr_code_item_layout_09.findViewById(R.id.result_icon_image);
         ImageView result_image_10 = qr_code_item_layout_10.findViewById(R.id.result_icon_image);
 
-        List<QrCodeImageHolder> imageHolderList = new ArrayList<QrCodeImageHolder>() {
+        imageHolderList = new ArrayList<QrCodeImageHolder>() {
             {
                 add(new QrCodeImageHolder(qr_code_image_01, result_image_01));
                 add(new QrCodeImageHolder(qr_code_image_02, result_image_02));
@@ -91,12 +99,8 @@ public class GameFragment extends Fragment {
         setupDataSet(root.getContext());
         setupCodeDB();
 
-        List<QrCodeItem> dbList = dao.getItems();
-        int count = 0;
-        for (QrCodeItem item : dbList) {
-            setupViews(imageHolderList.get(count).getQr_code(), imageHolderList.get(count).getResult(), item);
-            count++;
-        }
+
+        setupQrCodeImages();
 
 
         textView.setText(getProgressionText(root.getContext()));
@@ -112,103 +116,86 @@ public class GameFragment extends Fragment {
 
     private void showDialog(String qr_code_string, Context context) {
         if (!qr_code_string.equals("QR0")) {
-            switch (qr_code_string) {
-                case "QR1":
-                    Utils.createToast("QR1", context);
-                    break;
-                case "QR2":
-                    Utils.createToast("QR2", context);
-                    break;
-                case "QR3":
-                    Utils.createToast("QR3", context);
-                    break;
-                case "QR4":
-                    Utils.createToast("QR4", context);
-                    break;
-                case "QR5":
-                    Utils.createToast("QR5", context);
-                    break;
-                case "QR6":
-                    Utils.createToast("QR6", context);
-                    break;
-                case "QR7":
-                    Utils.createToast("QR7", context);
-                    break;
-                case "QR8":
-                    Utils.createToast("QR8", context);
-                    break;
-                case "QR9":
-                    Utils.createToast("QR9", context);
-                    break;
-                case "QR10":
-                    Utils.createToast("QR10", context);
-                    break;
-                default:
-                    break;
+            //if the qr code is already scanned show toast
+            if (dao.findItemByQrCodeNumber(qr_code_string).isScanned()) {
+                Utils.createToast(Utils.getStringFromResource(R.string.code_already_scanned_hint, context), context);
+            } else {
+                createQuestionDialog(context, qr_code_string);
             }
+
         }
     }
 
     private void setupDataSet(Context context) {
-        QrCodeItem item_01 = new QrCodeItem(R.drawable.qr_code_image_01,
+        QrCodeItem item_01 = new QrCodeItem(Utils.getStringFromResource(R.string.qr_code_01, context),
+                R.drawable.qr_code_image_01,
                 Utils.getStringFromResource(R.string.game_question_01, context),
                 Utils.getStringArrayAsListFromResource(R.array.wrong_answer_list_01, context),
                 Utils.getStringFromResource(R.string.right_answer_01, context),
-                false, false);
+                false, false, false);
 
-        QrCodeItem item_02 = new QrCodeItem(R.drawable.qr_code_image_02,
+        QrCodeItem item_02 = new QrCodeItem(Utils.getStringFromResource(R.string.qr_code_02, context),
+                R.drawable.qr_code_image_02,
                 Utils.getStringFromResource(R.string.game_question_02, context),
                 Utils.getStringArrayAsListFromResource(R.array.wrong_answer_list_02, context),
                 Utils.getStringFromResource(R.string.right_answer_02, context),
-                false, false);
+                false, false, false);
 
-        QrCodeItem item_03 = new QrCodeItem(R.drawable.qr_code_image_03,
+        QrCodeItem item_03 = new QrCodeItem(Utils.getStringFromResource(R.string.qr_code_03, context),
+                R.drawable.qr_code_image_03,
                 Utils.getStringFromResource(R.string.game_question_03, context),
                 Utils.getStringArrayAsListFromResource(R.array.wrong_answer_list_03, context),
                 Utils.getStringFromResource(R.string.right_answer_03, context),
-                false, false);
+                false, false, false);
 
-        QrCodeItem item_04 = new QrCodeItem(R.drawable.qr_code_image_04,
+        QrCodeItem item_04 = new QrCodeItem(Utils.getStringFromResource(R.string.qr_code_04, context),
+                R.drawable.qr_code_image_04,
                 Utils.getStringFromResource(R.string.game_question_04, context),
                 Utils.getStringArrayAsListFromResource(R.array.wrong_answer_list_04, context),
                 Utils.getStringFromResource(R.string.right_answer_04, context),
-                false, false);
+                false, false, false);
 
-        QrCodeItem item_05 = new QrCodeItem(R.drawable.qr_code_image_05,
+        QrCodeItem item_05 = new QrCodeItem(Utils.getStringFromResource(R.string.qr_code_05, context),
+                R.drawable.qr_code_image_05,
                 Utils.getStringFromResource(R.string.game_question_05, context),
                 Utils.getStringArrayAsListFromResource(R.array.wrong_answer_list_05, context),
                 Utils.getStringFromResource(R.string.right_answer_05, context),
-                false, false);
+                false, false, false);
 
-        QrCodeItem item_06 = new QrCodeItem(R.drawable.qr_code_image_06,
+        QrCodeItem item_06 = new QrCodeItem(Utils.getStringFromResource(R.string.qr_code_06, context),
+                R.drawable.qr_code_image_06,
                 Utils.getStringFromResource(R.string.game_question_06, context),
                 Utils.getStringArrayAsListFromResource(R.array.wrong_answer_list_06, context),
                 Utils.getStringFromResource(R.string.right_answer_06, context),
-                false, false);
+                false, false, false);
 
-        QrCodeItem item_07 = new QrCodeItem(R.drawable.qr_code_image_07,
+        QrCodeItem item_07 = new QrCodeItem(Utils.getStringFromResource(R.string.qr_code_07, context),
+                R.drawable.qr_code_image_07,
                 Utils.getStringFromResource(R.string.game_question_07, context),
                 Utils.getStringArrayAsListFromResource(R.array.wrong_answer_list_07, context),
                 Utils.getStringFromResource(R.string.right_answer_07, context),
-                false, false);
+                false, false, false);
 
-        QrCodeItem item_08 = new QrCodeItem(R.drawable.qr_code_image_08,
+        QrCodeItem item_08 = new QrCodeItem(Utils.getStringFromResource(R.string.qr_code_08, context),
+                R.drawable.qr_code_image_08,
                 Utils.getStringFromResource(R.string.game_question_08, context),
                 Utils.getStringArrayAsListFromResource(R.array.wrong_answer_list_08, context),
                 Utils.getStringFromResource(R.string.right_answer_08, context),
-                false, false);
+                false, false, false);
 
-        QrCodeItem item_09 = new QrCodeItem(R.drawable.qr_code_image_09,
+        QrCodeItem item_09 = new QrCodeItem(Utils.getStringFromResource(R.string.qr_code_09, context),
+                R.drawable.qr_code_image_09,
                 Utils.getStringFromResource(R.string.game_question_09, context),
                 Utils.getStringArrayAsListFromResource(R.array.wrong_answer_list_09, context),
                 Utils.getStringFromResource(R.string.right_answer_09, context),
-                false, false);
+                false, false, false);
 
-        QrCodeItem item_10 = new QrCodeItem(R.drawable.qr_code_image_10,
+        QrCodeItem item_10 = new QrCodeItem(Utils.getStringFromResource(R.string.qr_code_10, context),
+                R.drawable.qr_code_image_10,
                 Utils.getStringFromResource(R.string.game_question_10, context),
                 Utils.getStringArrayAsListFromResource(R.array.wrong_answer_list_10, context),
                 Utils.getStringFromResource(R.string.right_answer_10, context),
-                false, false);
+                false, false, false);
 
 
         dataSet.addAll(Arrays.asList(item_01,
@@ -259,5 +246,154 @@ public class GameFragment extends Fragment {
         return 0;
     }
 
+    private void createQuestionDialog(Context context, String qr_code) {
+        QrCodeItem item = dao.findItemByQrCodeNumber(qr_code);
+        //add all answer options into a list
+        ArrayList<String> answerList = (ArrayList<String>) item.getWrongAnswerList();
+        String rightAnswer = item.getRightAnswer();
+        answerList.add(rightAnswer);
+        randomOrderGenerator(answerList);
 
+        Dialog dialog = new Dialog(context);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.question_dialog);
+
+        ViewGroup answerOptionLayout01 = dialog.findViewById(R.id.answer_option_01);
+        ViewGroup answerOptionLayout02 = dialog.findViewById(R.id.answer_option_02);
+        ViewGroup answerOptionLayout03 = dialog.findViewById(R.id.answer_option_03);
+        ViewGroup answerOptionLayout04 = dialog.findViewById(R.id.answer_option_04);
+
+        TextView questionHeader = dialog.findViewById(R.id.question_header);
+        TextView question = dialog.findViewById(R.id.dialog_question_text);
+        Button submitBtn = dialog.findViewById(R.id.submit_answer_btn);
+        Button closeBtn = dialog.findViewById(R.id.game_dialog_close_btn);
+
+        CheckBox checkBox_answer_01 = answerOptionLayout01.findViewById(R.id.answer_option_check_box);
+        CheckBox checkBox_answer_02 = answerOptionLayout02.findViewById(R.id.answer_option_check_box);
+        CheckBox checkBox_answer_03 = answerOptionLayout03.findViewById(R.id.answer_option_check_box);
+        CheckBox checkBox_answer_04 = answerOptionLayout04.findViewById(R.id.answer_option_check_box);
+
+        TextView answer_option_01 = answerOptionLayout01.findViewById(R.id.answer_option_text);
+        TextView answer_option_02 = answerOptionLayout02.findViewById(R.id.answer_option_text);
+        TextView answer_option_03 = answerOptionLayout03.findViewById(R.id.answer_option_text);
+        TextView answer_option_04 = answerOptionLayout04.findViewById(R.id.answer_option_text);
+
+        answer_option_01.setText(answerList.get(0));
+        answer_option_02.setText(answerList.get(1));
+        answer_option_03.setText(answerList.get(2));
+        answer_option_04.setText(answerList.get(3));
+
+        // example --> QR10 --> 10. Frage
+        String textHeader = qr_code.replace("QR", "") + ". " + Utils.getStringFromResource(R.string.question_header, context);
+        question.setText(item.getQuestion());
+        questionHeader.setText(textHeader);
+
+        checkBox_answer_01.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    checkBox_answer_02.setChecked(false);
+                    checkBox_answer_03.setChecked(false);
+                    checkBox_answer_04.setChecked(false);
+                }
+            }
+        });
+
+        checkBox_answer_02.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    checkBox_answer_01.setChecked(false);
+                    checkBox_answer_03.setChecked(false);
+                    checkBox_answer_04.setChecked(false);
+                }
+            }
+        });
+
+
+        checkBox_answer_03.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    checkBox_answer_01.setChecked(false);
+                    checkBox_answer_02.setChecked(false);
+                    checkBox_answer_04.setChecked(false);
+                }
+            }
+        });
+
+        checkBox_answer_04.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    checkBox_answer_01.setChecked(false);
+                    checkBox_answer_02.setChecked(false);
+                    checkBox_answer_03.setChecked(false);
+                }
+            }
+        });
+
+
+        submitBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (checkBox_answer_01.isChecked()) {
+                    updateAnswerStatus(qr_code, answer_option_01, rightAnswer);
+                } else if (checkBox_answer_02.isChecked()) {
+                    updateAnswerStatus(qr_code, answer_option_02, rightAnswer);
+                } else if (checkBox_answer_03.isChecked()) {
+                    updateAnswerStatus(qr_code, answer_option_03, rightAnswer);
+                } else if (checkBox_answer_04.isChecked()) {
+                    updateAnswerStatus(qr_code, answer_option_04, rightAnswer);
+                } else {
+                    Utils.createToast(Utils.getStringFromResource(R.string.no_answer_selected_hint, context), context);
+                }
+                dao.updateScannedStatus(true, qr_code);
+                dialog.cancel();
+            }
+        });
+
+        closeBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.cancel();
+            }
+        });
+
+        dialog.show();
+
+
+    }
+
+    //shuffle list
+    private ArrayList<String> randomOrderGenerator(ArrayList<String> list) {
+        Collections.shuffle(list);
+        return list;
+    }
+
+
+    private void updateAnswerStatus(String qr_code, TextView view, String rightAnswer) {
+        dao.updateActivatedStatus(true, qr_code);
+        if (view.getText().toString().equals(rightAnswer)) {
+            dao.updateAnswerStatus(true, qr_code);
+        } else {
+            dao.updateAnswerStatus(false, qr_code);
+        }
+    }
+
+    private void setupQrCodeImages() {
+        int count = 0;
+        dbList = dao.getItems();
+        for (QrCodeItem item : dbList) {
+            setupViews(imageHolderList.get(count).getQr_code(), imageHolderList.get(count).getResult(), item);
+            count++;
+        }
+    }
+
+    @Override
+    public void onResume() {
+        //Todo: reload images onChange
+        setupQrCodeImages();
+        super.onResume();
+    }
 }

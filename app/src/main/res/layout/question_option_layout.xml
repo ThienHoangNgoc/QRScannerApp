@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:background="@android:color/black"
+    android:gravity="center_vertical"
+    android:orientation="horizontal">
+
+    <CheckBox
+        android:id="@+id/answer_option_check_box"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:button="@drawable/custom_checkbox" />
+
+    <TextView
+        android:id="@+id/answer_option_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/answerOptionText"
+        android:layout_marginLeft="@dimen/answer_text_margin_left"
+        tools:text="@string/right_answer_01" />
+
+</LinearLayout>
