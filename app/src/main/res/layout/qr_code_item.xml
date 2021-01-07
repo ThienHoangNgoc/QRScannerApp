@@ -17,9 +17,9 @@
 
         <ImageView
             android:id="@+id/qr_code_image"
-            android:layout_gravity="center"
             android:layout_width="@dimen/qr_code_size"
             android:layout_height="@dimen/qr_code_size"
+            android:layout_gravity="center"
             tools:background="@drawable/qr_code_image_01" />
 
         <ImageView
@@ -28,8 +28,7 @@
             android:layout_height="@dimen/result_icon_size"
             android:layout_gravity="center"
             android:padding="30dp"
-
-            tools:background="@drawable/game_wrong_answer_v2" />
+            android:visibility="invisible" />
 
 
     </com.google.android.material.card.MaterialCardView>
