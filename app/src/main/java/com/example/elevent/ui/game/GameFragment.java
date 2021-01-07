@@ -40,6 +40,7 @@ public class GameFragment extends Fragment {
     List<QrCodeItem> dataSet = new ArrayList<>();
     CodeDAO dao;
     private MaterialCardView continueBtn;
+    private TextView gameProgressText;
 
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -56,7 +57,7 @@ public class GameFragment extends Fragment {
 
         Button scanBtn = root.findViewById(R.id.scan_qr_code_btn);
         continueBtn = root.findViewById(R.id.game_continue_btn_wrapper);
-        TextView gameProgressText = root.findViewById(R.id.game_progress_text);
+        gameProgressText = root.findViewById(R.id.game_progress_text);
 
         ViewGroup qr_code_item_layout_01 = root.findViewById(R.id.qr_code_item_01);
         ViewGroup qr_code_item_layout_02 = root.findViewById(R.id.qr_code_item_02);
@@ -379,6 +380,7 @@ public class GameFragment extends Fragment {
                 if (getTotalNumberOfAnsweredQuestions() == 4) {
                     continueBtn.setVisibility(View.VISIBLE);
                 }
+                gameProgressText.setText(getProgressionText(context));
                 dialog.cancel();
             }
         });
@@ -472,7 +474,6 @@ public class GameFragment extends Fragment {
                 }
             }
             count++;
-
         }
 
     }

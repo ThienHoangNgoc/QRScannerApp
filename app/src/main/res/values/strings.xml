@@ -178,7 +178,7 @@
     </string-array>
     <string name="right_answer_06">5 Jahre</string>
 
-    <string name="game_question_07">Wie lange dauert der 30-jährige Krieg</string>
+    <string name="game_question_07">Wie lang hat der 30-jährige Krieg gedauert?</string>
     <string-array name="wrong_answer_list_07">
         <item>29 Jahre</item>
         <item>28 Jahre</item>
@@ -190,9 +190,9 @@
     <string-array name="wrong_answer_list_08">
         <item>5 Monate</item>
         <item>3 Monate</item>
-        <item>7 Monate</item>
+        <item>1 Monat</item>
     </string-array>
-    <string name="right_answer_08">1 Monat</string>
+    <string name="right_answer_08">Alle</string>
 
     <string name="game_question_09">Ein Bauer hat 16 Schafe. Fast alle sterben, außer 9. Wie viele Schafe bleiben übrig?</string>
     <string-array name="wrong_answer_list_09">
