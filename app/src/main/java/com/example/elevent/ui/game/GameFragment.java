@@ -304,6 +304,7 @@ public class GameFragment extends Fragment {
                 count++;
             }
         }
+        //Todo count doesnt Work
         return count;
     }
 
@@ -425,7 +426,7 @@ public class GameFragment extends Fragment {
     }
 
     private void showContinueBtn() {
-        if (getTotalNumberOfAnsweredQuestions() >= 2) {
+        if (getTotalNumberOfAnsweredQuestions() == 10) {
             continueBtnWrapper.setVisibility(View.VISIBLE);
         }
     }

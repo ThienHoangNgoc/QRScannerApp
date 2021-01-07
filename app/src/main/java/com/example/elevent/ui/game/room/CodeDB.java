@@ -8,7 +8,7 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.room.TypeConverters;
 
-@Database(entities = {QrCodeItem.class}, version = 9)
+@Database(entities = {QrCodeItem.class}, version = 10)
 @TypeConverters({Converters.class})
 public abstract class CodeDB extends RoomDatabase {
 
