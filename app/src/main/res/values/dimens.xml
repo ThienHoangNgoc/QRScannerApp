@@ -63,6 +63,11 @@
     <dimen name="submit_btn_height">17dp</dimen>
     <dimen name="answer_option_text_size">13dp</dimen>
 
+    <!-- price dialog -->
+    <dimen name="price_icon_size">40dp</dimen>
+    <dimen name="price_dialog_width">300dp</dimen>
+    <dimen name="price_dialog_height">250dp</dimen>
+
 
 
 </resources>

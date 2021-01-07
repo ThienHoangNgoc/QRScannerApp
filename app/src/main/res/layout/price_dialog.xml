@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="@dimen/price_dialog_width"
+    android:layout_height="@dimen/price_dialog_height"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@android:color/black">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/h_guide_line_01"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.2" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/h_guide_line_02"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.8" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/v_guide_line_01"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.05" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/v_guide_line_02"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.95" />
+
+    <Button
+        android:id="@+id/price_close_btn"
+        android:layout_width="@dimen/close_icon_size"
+        android:layout_height="@dimen/close_icon_size"
+        android:background="@drawable/close_icon_white"
+        app:layout_constraintBottom_toBottomOf="@id/h_guide_line_01"
+        app:layout_constraintRight_toRightOf="@id/v_guide_line_02"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/price_image"
+        android:layout_width="@dimen/price_icon_size"
+        android:layout_height="@dimen/price_icon_size"
+        tools:background="@drawable/price_icon_01"
+        app:layout_constraintLeft_toLeftOf="@id/v_guide_line_01"
+        app:layout_constraintRight_toRightOf="@id/v_guide_line_02"
+        app:layout_constraintTop_toTopOf="@id/h_guide_line_01" />
+
+    <TextView
+        android:id="@+id/price_text"
+        style="@style/headerText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/white"
+        app:layout_constraintBottom_toTopOf="@id/won_text"
+        app:layout_constraintLeft_toLeftOf="@id/v_guide_line_01"
+        app:layout_constraintRight_toRightOf="@id/v_guide_line_02"
+        app:layout_constraintTop_toBottomOf="@id/price_image" />
+
+    <TextView
+        android:id="@+id/won_text"
+        style="@style/titleText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/price_won_text"
+        android:textColor="@android:color/white"
+        app:layout_constraintBottom_toBottomOf="@id/h_guide_line_02"
+        app:layout_constraintLeft_toLeftOf="@id/v_guide_line_01"
+        app:layout_constraintRight_toRightOf="@id/v_guide_line_02"
+        app:layout_constraintTop_toBottomOf="@id/price_text" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

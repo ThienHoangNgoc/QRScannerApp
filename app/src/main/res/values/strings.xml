@@ -209,5 +209,10 @@
         <item>die Füße</item>
     </string-array>
     <string name="right_answer_10">das Echo</string>
-
+    
+    <!-- price dialog -->
+    <string name="price_03">Trost-Give-Away</string>
+    <string name="price_02">Give-Away A</string>
+    <string name="price_01">Give-Away B </string>
+    <string name="price_won_text">GEWONNEN!</string>
 </resources>

@@ -2,8 +2,6 @@ package com.example.elevent.ui.game;
 
 import android.app.Dialog;
 import android.content.Context;
-import android.content.Intent;
-import android.media.Image;
 import android.os.Bundle;
 import android.text.Html;
 import android.util.Log;
@@ -20,11 +18,9 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
-import com.example.elevent.MainActivity;
 import com.example.elevent.R;
 import com.example.elevent.ui.game.room.CodeDAO;
 import com.example.elevent.ui.game.room.QrCodeItem;
-import com.example.elevent.ui.info.DetailedInfoFragmentArgs;
 import com.example.elevent.utils.Utils;
 import com.google.android.material.card.MaterialCardView;
 
@@ -39,7 +35,8 @@ public class GameFragment extends Fragment {
 
     List<QrCodeItem> dataSet = new ArrayList<>();
     CodeDAO dao;
-    private MaterialCardView continueBtn;
+    private MaterialCardView continueBtnWrapper;
+    private Button continueBtn;
     private TextView gameProgressText;
 
 
@@ -56,7 +53,8 @@ public class GameFragment extends Fragment {
 
 
         Button scanBtn = root.findViewById(R.id.scan_qr_code_btn);
-        continueBtn = root.findViewById(R.id.game_continue_btn_wrapper);
+        continueBtnWrapper = root.findViewById(R.id.game_continue_btn_wrapper);
+        continueBtn = root.findViewById(R.id.game_continue_btn);
         gameProgressText = root.findViewById(R.id.game_progress_text);
 
         ViewGroup qr_code_item_layout_01 = root.findViewById(R.id.qr_code_item_01);
@@ -117,7 +115,8 @@ public class GameFragment extends Fragment {
         }};
 
 
-        showDialog(qr_code_string, root.getContext(), resultImageList);
+        showQuestionDialog(qr_code_string, root.getContext(), resultImageList);
+        showContinueBtn();
         setupResultImage(resultImageList);
 
         gameProgressText.setText(getProgressionText(root.getContext()));
@@ -131,14 +130,14 @@ public class GameFragment extends Fragment {
         continueBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Todo: open dialog for price ;)
+                showPriceDialog(root.getContext());
             }
         });
 
         return root;
     }
 
-    private void showDialog(String qr_code_string, Context context, List<ImageView> list) {
+    private void showQuestionDialog(String qr_code_string, Context context, List<ImageView> list) {
         if (!qr_code_string.equals("QR0")) {
             //if the qr code is already scanned show toast
             if (dao.findItemByQrCodeNumber(qr_code_string).isScanned()) {
@@ -148,6 +147,40 @@ public class GameFragment extends Fragment {
             }
 
         }
+    }
+
+    private void showPriceDialog(Context context) {
+        Dialog dialog = new Dialog(context);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.price_dialog);
+
+        Button closeBtn = dialog.findViewById(R.id.price_close_btn);
+        ImageView imageView = dialog.findViewById(R.id.price_image);
+        TextView price_text = dialog.findViewById(R.id.price_text);
+
+        int rightAnswerCount = getNumberOfRightAnswers();
+
+        if (rightAnswerCount == 10) {
+            imageView.setBackgroundResource(R.drawable.price_icon_01);
+            price_text.setText(Utils.getStringFromResource(R.string.price_01, context));
+        } else if (10 > rightAnswerCount && rightAnswerCount > 4) {
+            //Todo: exchange price_image and text
+            imageView.setBackgroundResource(R.drawable.price_icon_01);
+            price_text.setText(Utils.getStringFromResource(R.string.price_02, context));
+        } else {
+            imageView.setBackgroundResource(R.drawable.price_icon_01);
+            price_text.setText(Utils.getStringFromResource(R.string.price_03, context));
+        }
+
+        closeBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.cancel();
+            }
+        });
+
+        dialog.show();
+
     }
 
     private void setupDataSet(Context context) {
@@ -338,7 +371,6 @@ public class GameFragment extends Fragment {
             }
         });
 
-
         checkBox_answer_03.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -377,9 +409,7 @@ public class GameFragment extends Fragment {
                     Utils.createToast(Utils.getStringFromResource(R.string.no_answer_selected_hint, context), context);
                 }
                 dao.updateScannedStatus(true, qr_code);
-                if (getTotalNumberOfAnsweredQuestions() == 4) {
-                    continueBtn.setVisibility(View.VISIBLE);
-                }
+                showContinueBtn();
                 gameProgressText.setText(getProgressionText(context));
                 dialog.cancel();
             }
@@ -391,8 +421,13 @@ public class GameFragment extends Fragment {
                 dialog.cancel();
             }
         });
-
         dialog.show();
+    }
+
+    private void showContinueBtn() {
+        if (getTotalNumberOfAnsweredQuestions() >= 2) {
+            continueBtnWrapper.setVisibility(View.VISIBLE);
+        }
     }
 
     //shuffle list
@@ -441,9 +476,9 @@ public class GameFragment extends Fragment {
     private void setRightResultImage(ImageView view, boolean isAnsweredRight) {
         view.setVisibility(View.VISIBLE);
         if (isAnsweredRight) {
-            view.setBackgroundResource(R.drawable.game_right_answer_v2);
+            view.setBackgroundResource(R.drawable.game_right_answer);
         } else {
-            view.setBackgroundResource(R.drawable.game_wrong_answer_v2);
+            view.setBackgroundResource(R.drawable.game_wrong_answer);
         }
 
     }
@@ -468,9 +503,9 @@ public class GameFragment extends Fragment {
             if (item.isActivated()) {
                 viewList.get(count).setVisibility(View.VISIBLE);
                 if (item.isAnsweredRight()) {
-                    viewList.get(count).setBackgroundResource(R.drawable.game_right_answer_v2);
+                    viewList.get(count).setBackgroundResource(R.drawable.game_right_answer);
                 } else {
-                    viewList.get(count).setBackgroundResource(R.drawable.game_wrong_answer_v2);
+                    viewList.get(count).setBackgroundResource(R.drawable.game_wrong_answer);
                 }
             }
             count++;
