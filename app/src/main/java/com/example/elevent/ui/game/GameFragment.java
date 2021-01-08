@@ -164,11 +164,10 @@ public class GameFragment extends Fragment {
             imageView.setBackgroundResource(R.drawable.price_icon_01);
             price_text.setText(Utils.getStringFromResource(R.string.price_01, context));
         } else if (10 > rightAnswerCount && rightAnswerCount > 4) {
-            //Todo: exchange price_image and text
-            imageView.setBackgroundResource(R.drawable.price_icon_01);
+            imageView.setBackgroundResource(R.drawable.price_icon_02);
             price_text.setText(Utils.getStringFromResource(R.string.price_02, context));
         } else {
-            imageView.setBackgroundResource(R.drawable.price_icon_01);
+            imageView.setBackgroundResource(R.drawable.price_icon_03);
             price_text.setText(Utils.getStringFromResource(R.string.price_03, context));
         }
 
