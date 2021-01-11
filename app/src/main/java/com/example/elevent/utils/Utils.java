@@ -21,6 +21,7 @@ import com.example.elevent.ui.info.InfoFragmentDirections;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import static com.example.elevent.ui.info.InfoFragmentDirections.*;
@@ -56,6 +57,16 @@ public class Utils {
 
     public static CodeDAO getCodeDAO(Context context) {
         return CodeDB.getCodeDB(context).getItemDAO();
+    }
+
+    /**
+     *
+     * @param list a String ArrayList
+     * @return return the shuffled list
+     */
+    public static ArrayList<String> randomOrderGenerator(ArrayList<String> list) {
+        Collections.shuffle(list);
+        return list;
     }
 
 

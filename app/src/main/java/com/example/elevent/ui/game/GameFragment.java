@@ -33,7 +33,7 @@ public class GameFragment extends Fragment {
 
     private final static String TAG = "GameFragment";
 
-    List<QrCodeItem> dataSet = new ArrayList<>();
+    List<QrCodeItem> localDataSet = new ArrayList<>();
     CodeDAO dao;
     private MaterialCardView continueBtnWrapper;
     private Button continueBtn;
@@ -42,10 +42,8 @@ public class GameFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-
         View root = inflater.inflate(R.layout.fragment_game, container, false);
-
-        setupDataSet(root.getContext());
+        setupLocalDataSet(root.getContext());
         dao = Utils.getCodeDAO(root.getContext());
         setupCodeDB();
 
@@ -137,9 +135,13 @@ public class GameFragment extends Fragment {
         return root;
     }
 
+
+    //opens the question dialog
     private void showQuestionDialog(String qr_code_string, Context context, List<ImageView> list) {
+        //when the given string is QR0, don't open the question dialog
         if (!qr_code_string.equals("QR0")) {
-            //if the qr code is already scanned show toast
+            //show a hint if the QR code was already scanned
+            //otherwise show the respective question dialog. Example: if the given string is QR2 open the question dialog with the data of question 2
             if (dao.findItemByQrCodeNumber(qr_code_string).isScanned()) {
                 Utils.createToast(Utils.getStringFromResource(R.string.code_already_scanned_hint, context), context);
             } else {
@@ -149,6 +151,7 @@ public class GameFragment extends Fragment {
         }
     }
 
+    //opens the price dialog
     private void showPriceDialog(Context context) {
         Dialog dialog = new Dialog(context);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -159,7 +162,8 @@ public class GameFragment extends Fragment {
         TextView price_text = dialog.findViewById(R.id.price_text);
 
         int rightAnswerCount = getNumberOfRightAnswers();
-
+        //decide which price the user is given depending on the right answers he/she did
+        //10 answers right = price 1, less than 10 but more than 4 = price 2, otherwise(4 or less) price 3
         if (rightAnswerCount == 10) {
             imageView.setBackgroundResource(R.drawable.price_icon_01);
             price_text.setText(Utils.getStringFromResource(R.string.price_01, context));
@@ -182,7 +186,14 @@ public class GameFragment extends Fragment {
 
     }
 
-    private void setupDataSet(Context context) {
+
+    /**
+     *  since we don't get the data from any servers or online services we need to setup a local data set which provides us the needed data
+     * @param context
+     * context is needed for the Utils methods
+     */
+    private void setupLocalDataSet(Context context) {
+        //create QrCodeItems for each QR Code with the following parameters:
         QrCodeItem item_01 = new QrCodeItem(Utils.getStringFromResource(R.string.qr_code_01, context),
                 R.drawable.qr_code_image_01,
                 Utils.getStringFromResource(R.string.game_question_01, context),
@@ -253,8 +264,8 @@ public class GameFragment extends Fragment {
                 Utils.getStringFromResource(R.string.right_answer_10, context),
                 false, false, false);
 
-
-        dataSet.addAll(Arrays.asList(item_01,
+        //add all items into a list (localDataSet) for better usability moving forward
+        localDataSet.addAll(Arrays.asList(item_01,
                 item_02,
                 item_03,
                 item_04,
@@ -266,17 +277,25 @@ public class GameFragment extends Fragment {
                 item_10));
     }
 
-
-    //when there are no itmes in the db --> setup data
+    /**
+     * when there is no data in the database, insert the local data set, created in the method setupLocalDataSet()
+     */
     private void setupCodeDB() {
         if (dao.getItems().size() == 0) {
-            for (QrCodeItem item : dataSet) {
+            for (QrCodeItem item : localDataSet) {
                 dao.insert(item);
             }
         }
     }
 
 
+
+    /**
+     *
+     *  put together the progression text String
+     * @param context
+     * @return String
+     */
     private CharSequence getProgressionText(Context context) {
         String progressionText = Utils.getStringFromResource(R.string.game_progress_text_01, context) +
                 " <b>" +
@@ -286,6 +305,11 @@ public class GameFragment extends Fragment {
         return Html.fromHtml(progressionText);
     }
 
+    /**
+     * go through all items in the database.
+     * when the items has been answered right add +1 to the count
+     * @return the final count
+     */
     private int getNumberOfRightAnswers() {
         int count = 0;
         for (QrCodeItem item : dao.getItems()) {
@@ -296,6 +320,11 @@ public class GameFragment extends Fragment {
         return count;
     }
 
+    /**
+     * go through all items in the database.
+     * when the items has been activated (the corresponding QR code has been scanned) add +1 to the count
+     * @return the final count
+     */
     private int getTotalNumberOfAnsweredQuestions() {
         int count = 0;
         for (QrCodeItem item : dao.getItems()) {
@@ -303,22 +332,29 @@ public class GameFragment extends Fragment {
                 count++;
             }
         }
-        //Todo count doesnt Work
         return count;
     }
 
+    /**
+     *
+     * @param context needed for creating a dialog
+     * @param qr_code the qr code given from the QrCodeScannerFragment
+     * @param list a list with the result images
+     */
     private void createQuestionDialog(Context context, String qr_code, List<ImageView> list) {
         QrCodeItem item = dao.findItemByQrCodeNumber(qr_code);
         //add all answer options into a list
         ArrayList<String> answerList = (ArrayList<String>) item.getWrongAnswerList();
         String rightAnswer = item.getRightAnswer();
         answerList.add(rightAnswer);
-        randomOrderGenerator(answerList);
+        Utils.randomOrderGenerator(answerList);
 
+        //create a dialog
         Dialog dialog = new Dialog(context);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setContentView(R.layout.question_dialog);
 
+        //get views from the dialog-layout (xml)
         ViewGroup answerOptionLayout01 = dialog.findViewById(R.id.answer_option_01);
         ViewGroup answerOptionLayout02 = dialog.findViewById(R.id.answer_option_02);
         ViewGroup answerOptionLayout03 = dialog.findViewById(R.id.answer_option_03);
@@ -339,15 +375,22 @@ public class GameFragment extends Fragment {
         TextView answer_option_03 = answerOptionLayout03.findViewById(R.id.answer_option_text);
         TextView answer_option_04 = answerOptionLayout04.findViewById(R.id.answer_option_text);
 
+        //set answer options from the answerList
         answer_option_01.setText(answerList.get(0));
         answer_option_02.setText(answerList.get(1));
         answer_option_03.setText(answerList.get(2));
         answer_option_04.setText(answerList.get(3));
 
-        // example --> QR10 --> 10. Frage
-        String textHeader = qr_code.replace("QR", "") + ". " + Utils.getStringFromResource(R.string.question_header, context);
+
+        // Set the question text
         question.setText(item.getQuestion());
+        // Set the text header. Example: QR10 --> "10. Frage"
+        String textHeader = qr_code.replace("QR", "") + ". " + Utils.getStringFromResource(R.string.question_header, context);
+        //set the created header String
         questionHeader.setText(textHeader);
+
+        //add listeners to all check boxes
+        //when 1 box is checked uncheck all other boxes, do this for all checkboxes
 
         checkBox_answer_01.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -393,10 +436,11 @@ public class GameFragment extends Fragment {
             }
         });
 
-
+        //set clicklistener for submit button
         submitBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //check if picked answer is the right one and update the db
                 if (checkBox_answer_01.isChecked()) {
                     updateAnswerStatus(qr_code, answer_option_01, rightAnswer, list);
                 } else if (checkBox_answer_02.isChecked()) {
@@ -406,36 +450,50 @@ public class GameFragment extends Fragment {
                 } else if (checkBox_answer_04.isChecked()) {
                     updateAnswerStatus(qr_code, answer_option_04, rightAnswer, list);
                 } else {
+                    //if no answer was chosen, give the user a hint
                     Utils.createToast(Utils.getStringFromResource(R.string.no_answer_selected_hint, context), context);
                 }
+                //update the status of the qr code item (activated)
                 dao.updateScannedStatus(true, qr_code);
+                //check if the continue button should be showed
                 showContinueBtn();
+                //update the game progress text
                 gameProgressText.setText(getProgressionText(context));
+                //close the dialog
                 dialog.cancel();
             }
         });
-
+        //set listener for close button
         closeBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //close the dialog
                 dialog.cancel();
             }
         });
+
         dialog.show();
     }
 
+    /**
+     * show the continue button if all questions are answered (10)
+     */
     private void showContinueBtn() {
         if (getTotalNumberOfAnsweredQuestions() == 10) {
             continueBtnWrapper.setVisibility(View.VISIBLE);
+        }else{
+            continueBtnWrapper.setVisibility(View.GONE);
         }
     }
 
-    //shuffle list
-    private ArrayList<String> randomOrderGenerator(ArrayList<String> list) {
-        Collections.shuffle(list);
-        return list;
-    }
 
+    /**
+     * set the right result image depending on what qr code string was given
+     *
+     * @param qrCodeText qr code given from the scannerFragment
+     * @param list list with the result image views
+     * @param isAnsweredRight set the right image depending on whether this is true or not (answered right or wrong)
+     */
     private void changeResultImage(String qrCodeText, List<ImageView> list, boolean isAnsweredRight) {
         switch (qrCodeText) {
             case "QR1":
@@ -473,6 +531,13 @@ public class GameFragment extends Fragment {
         }
     }
 
+    /**
+     *  set the visibility of the result image to visible (is GONE per default)
+     *  set the right result image depending on whether the user answered right or wrong
+     *
+     * @param view imageView of the result image of the qr code item
+     * @param isAnsweredRight set the right image depending on whether this is true or not (answered right or wrong)
+     */
     private void setRightResultImage(ImageView view, boolean isAnsweredRight) {
         view.setVisibility(View.VISIBLE);
         if (isAnsweredRight) {
@@ -483,19 +548,32 @@ public class GameFragment extends Fragment {
 
     }
 
+    /**
+     *
+     * update the activated status(is the result image visible or not) and the answer status(answered right or wrong) of the qr code item
+     * update the db entries accordingly
+     * @param qr_code
+     * @param view
+     * @param rightAnswer
+     * @param list
+     */
     private void updateAnswerStatus(String qr_code, TextView view, String rightAnswer, List<ImageView> list) {
         dao.updateActivatedStatus(true, qr_code);
         if (view.getText().toString().equals(rightAnswer)) {
             changeResultImage(qr_code, list, true);
             dao.updateAnswerStatus(true, qr_code);
         } else {
-            Log.d(TAG, "wrong result");
             changeResultImage(qr_code, list, false);
             dao.updateAnswerStatus(false, qr_code);
-
         }
     }
 
+    /**
+     *
+     * this method is in onCreate to show the right items of the result images of each qr code items
+     * the data used here is from the db
+     * @param viewList
+     */
     private void setupResultImage(List<ImageView> viewList) {
         List<QrCodeItem> list = dao.getItems();
         int count = 0;
