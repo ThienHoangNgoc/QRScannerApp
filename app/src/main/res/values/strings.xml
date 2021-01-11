@@ -110,6 +110,7 @@
     <string name="game_progress_text_03">VON 10 FRAGEN RICHTIG BEANTWORTET</string>
     <string name="game_continue_btn_text">WEITER</string>
     <string name="code_already_scanned_hint">Der Code wurde bereits gescanned.</string>
+    <string name="qr_code_not_supported_hint">Der gescannte QR-Code ist nicht unterstützt.</string>
 
     <!-- qr code content -->
     <string name="qr_code_01">QR1</string>

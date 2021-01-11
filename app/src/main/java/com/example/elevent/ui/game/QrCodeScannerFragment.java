@@ -48,6 +48,8 @@ public class QrCodeScannerFragment extends Fragment {
                 activity.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
+                        //if the scan was successful put the result into safe arg bundle to use it in the directed fragment (GameFragment)
+                        //this is used to pass data to the new fragment, which is navigated to
                         QrCodeScannerFragmentDirections.OpenDialogAction action = QrCodeScannerFragmentDirections.openDialogAction();
                         action.setQrCode(result.getText());
                         Navigation.findNavController(root).navigate(action);
@@ -58,6 +60,7 @@ public class QrCodeScannerFragment extends Fragment {
         return root;
     }
 
+    //get permission for the camera
     private void setupPermissions() {
         int permission = ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.CAMERA);
         if (permission != PackageManager.PERMISSION_GRANTED) {
@@ -72,15 +75,11 @@ public class QrCodeScannerFragment extends Fragment {
         ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.CAMERA}, CAMERA_REQUEST_CODE);
     }
 
-
+    //this is used in the main activity
     public void showCodeScannerPreview() {
         codeScanner.startPreview();
     }
 
-    @Override
-    public void onResume() {
-        super.onResume();
-    }
 
     @Override
     public void onPause() {

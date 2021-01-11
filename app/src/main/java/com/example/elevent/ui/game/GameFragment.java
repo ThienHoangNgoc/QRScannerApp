@@ -138,16 +138,23 @@ public class GameFragment extends Fragment {
 
     //opens the question dialog
     private void showQuestionDialog(String qr_code_string, Context context, List<ImageView> list) {
-        //when the given string is QR0, don't open the question dialog
-        if (!qr_code_string.equals("QR0")) {
-            //show a hint if the QR code was already scanned
-            //otherwise show the respective question dialog. Example: if the given string is QR2 open the question dialog with the data of question 2
-            if (dao.findItemByQrCodeNumber(qr_code_string).isScanned()) {
-                Utils.createToast(Utils.getStringFromResource(R.string.code_already_scanned_hint, context), context);
-            } else {
-                createQuestionDialog(context, qr_code_string, list);
+        //when the given string does not contain "QR" show a hint
+        //QR0 is the default value for the GameFragment, is set in mobile_navigation.xml
+        if (qr_code_string.contains("QR")) {
+            //if the he given string is "QR0" don't show the dialog
+            if(!qr_code_string.contains("QR0")){
+                //show a hint if the QR code was already scanned
+                //otherwise show the respective question dialog. Example: if the given string is QR2 open the question dialog with the data of question 2
+                if (dao.findItemByQrCodeNumber(qr_code_string).isScanned()) {
+                    Utils.createToast(Utils.getStringFromResource(R.string.code_already_scanned_hint, context), context);
+                } else {
+                    createQuestionDialog(context, qr_code_string, list);
+                }
             }
 
+
+        } else {
+            Utils.createToast(Utils.getStringFromResource(R.string.qr_code_not_supported_hint, getContext()), getContext());
         }
     }
 
@@ -188,9 +195,9 @@ public class GameFragment extends Fragment {
 
 
     /**
-     *  since we don't get the data from any servers or online services we need to setup a local data set which provides us the needed data
-     * @param context
-     * context is needed for the Utils methods
+     * since we don't get the data from any servers or online services we need to setup a local data set which provides us the needed data
+     *
+     * @param context context is needed for the Utils methods
      */
     private void setupLocalDataSet(Context context) {
         //create QrCodeItems for each QR Code with the following parameters:
@@ -289,10 +296,9 @@ public class GameFragment extends Fragment {
     }
 
 
-
     /**
+     * put together the progression text String
      *
-     *  put together the progression text String
      * @param context
      * @return String
      */
@@ -308,6 +314,7 @@ public class GameFragment extends Fragment {
     /**
      * go through all items in the database.
      * when the items has been answered right add +1 to the count
+     *
      * @return the final count
      */
     private int getNumberOfRightAnswers() {
@@ -323,6 +330,7 @@ public class GameFragment extends Fragment {
     /**
      * go through all items in the database.
      * when the items has been activated (the corresponding QR code has been scanned) add +1 to the count
+     *
      * @return the final count
      */
     private int getTotalNumberOfAnsweredQuestions() {
@@ -336,10 +344,9 @@ public class GameFragment extends Fragment {
     }
 
     /**
-     *
      * @param context needed for creating a dialog
      * @param qr_code the qr code given from the QrCodeScannerFragment
-     * @param list a list with the result images
+     * @param list    a list with the result images
      */
     private void createQuestionDialog(Context context, String qr_code, List<ImageView> list) {
         QrCodeItem item = dao.findItemByQrCodeNumber(qr_code);
@@ -481,7 +488,7 @@ public class GameFragment extends Fragment {
     private void showContinueBtn() {
         if (getTotalNumberOfAnsweredQuestions() == 10) {
             continueBtnWrapper.setVisibility(View.VISIBLE);
-        }else{
+        } else {
             continueBtnWrapper.setVisibility(View.GONE);
         }
     }
@@ -490,8 +497,8 @@ public class GameFragment extends Fragment {
     /**
      * set the right result image depending on what qr code string was given
      *
-     * @param qrCodeText qr code given from the scannerFragment
-     * @param list list with the result image views
+     * @param qrCodeText      qr code given from the scannerFragment
+     * @param list            list with the result image views
      * @param isAnsweredRight set the right image depending on whether this is true or not (answered right or wrong)
      */
     private void changeResultImage(String qrCodeText, List<ImageView> list, boolean isAnsweredRight) {
@@ -532,10 +539,10 @@ public class GameFragment extends Fragment {
     }
 
     /**
-     *  set the visibility of the result image to visible (is GONE per default)
-     *  set the right result image depending on whether the user answered right or wrong
+     * set the visibility of the result image to visible (is GONE per default)
+     * set the right result image depending on whether the user answered right or wrong
      *
-     * @param view imageView of the result image of the qr code item
+     * @param view            imageView of the result image of the qr code item
      * @param isAnsweredRight set the right image depending on whether this is true or not (answered right or wrong)
      */
     private void setRightResultImage(ImageView view, boolean isAnsweredRight) {
@@ -549,9 +556,9 @@ public class GameFragment extends Fragment {
     }
 
     /**
-     *
      * update the activated status(is the result image visible or not) and the answer status(answered right or wrong) of the qr code item
      * update the db entries accordingly
+     *
      * @param qr_code
      * @param view
      * @param rightAnswer
@@ -569,9 +576,9 @@ public class GameFragment extends Fragment {
     }
 
     /**
-     *
      * this method is in onCreate to show the right items of the result images of each qr code items
      * the data used here is from the db
+     *
      * @param viewList
      */
     private void setupResultImage(List<ImageView> viewList) {

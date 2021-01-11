@@ -29,7 +29,7 @@ public class StartFragment extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_start, container, false);
 
-
+        //set up the buttons with click listeners
         setupStartButton(root,
                 R.id.info_btn_layout,
                 R.drawable.info_btn,
@@ -70,6 +70,7 @@ public class StartFragment extends Fragment {
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //navigate to the corresponding fragment
                 Utils.navigateToNewFragment(requireActivity(), fragmentID);
             }
         });

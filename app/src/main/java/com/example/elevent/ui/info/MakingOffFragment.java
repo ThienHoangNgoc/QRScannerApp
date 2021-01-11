@@ -27,6 +27,7 @@ public class MakingOffFragment extends Fragment {
         playBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //when the play button is clicked, open the youtube link
                 Intent intent = new Intent(Intent.ACTION_VIEW);
                 intent.setData(Uri.parse(Utils.getStringFromResource(R.string.making_off_link, root.getContext())));
                 startActivity(intent);

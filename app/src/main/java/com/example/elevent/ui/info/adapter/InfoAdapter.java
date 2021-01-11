@@ -24,6 +24,7 @@ public class InfoAdapter extends RecyclerView.Adapter<InfoAdapter.ViewHolder> {
 
     private List<InfoItem> dataSet;
 
+    //custom viewHolder Class for the adapter
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
         private final ViewGroup layout;
@@ -31,7 +32,7 @@ public class InfoAdapter extends RecyclerView.Adapter<InfoAdapter.ViewHolder> {
         private final TextView subtitle;
         private final ImageView imageView;
 
-
+        //the viewHolder initializes the ui views for each list item
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             layout = itemView.findViewById(R.id.info_item_layout_id);
@@ -43,9 +44,8 @@ public class InfoAdapter extends RecyclerView.Adapter<InfoAdapter.ViewHolder> {
             layout.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Log.d("ADAPTER", title.getText().toString());
                     Context context = v.getContext();
-
+                    //depending on the item which will be clicked on, put the corresponding number, which is used in the next fragment
                     int infoItemNumber = 0;
                     if (getTitle().getText().toString().equals(Utils.getStringFromResource(R.string.info_item_title_01, context))) {
                         infoItemNumber = 1;
@@ -88,6 +88,7 @@ public class InfoAdapter extends RecyclerView.Adapter<InfoAdapter.ViewHolder> {
         }
     }
 
+    //constructor of InfoAdapter
     public InfoAdapter(List<InfoItem> dataSet) {
         this.dataSet = dataSet;
     }
@@ -99,6 +100,7 @@ public class InfoAdapter extends RecyclerView.Adapter<InfoAdapter.ViewHolder> {
         return new ViewHolder(view);
     }
 
+    //set data of the views in the ViewHolder onBind
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.getTitle().setText(dataSet.get(position).getTitle());
@@ -106,6 +108,7 @@ public class InfoAdapter extends RecyclerView.Adapter<InfoAdapter.ViewHolder> {
         holder.getImageView().setBackgroundResource(dataSet.get(position).getImageID());
     }
 
+    //get the item count of the list
     @Override
     public int getItemCount() {
         return dataSet.size();

@@ -28,33 +28,32 @@ import static com.example.elevent.ui.info.InfoFragmentDirections.*;
 
 public class Utils {
 
+    //get string from your resource folder (res/string)
     public static String getStringFromResource(int stringID, Context context) {
         return context.getResources().getString(stringID);
     }
-
+    //get string-array from your resource folder (res/string)
     public static ArrayList<String> getStringArrayAsListFromResource(int stringArrayID, Context context) {
         return new ArrayList<>(Arrays.asList(context.getResources().getStringArray(stringArrayID)));
     }
 
-    public static CharSequence getTextFromResource(int stringID, Context context) {
-        return context.getResources().getText(stringID);
-    }
-
+    //create a toast
     public static void createToast(String text, Context context) {
         Toast.makeText(context, text, Toast.LENGTH_LONG).show();
     }
 
+    //this method uses the NavController to navigate through fragments
+    //nav component is used in this app for navigation
     public static void navigateToNewFragment(Context context, int destinationFragmentID) {
         NavController navController = Navigation.findNavController((FragmentActivity) context, R.id.nav_host_fragment);
         navController.navigate(destinationFragmentID);
     }
 
-    public static void passDataToNewFragment(View view, int infoItemNumber) {
-        ShowMoreInfoAction action = InfoFragmentDirections.showMoreInfoAction();
-        action.setInfoItemNumber(infoItemNumber);
-        Navigation.findNavController(view).navigate(action);
-    }
-
+    /**
+     * use this method to get your DAO object for further operations with the room db
+     * @param context
+     * @return
+     */
     public static CodeDAO getCodeDAO(Context context) {
         return CodeDB.getCodeDB(context).getItemDAO();
     }

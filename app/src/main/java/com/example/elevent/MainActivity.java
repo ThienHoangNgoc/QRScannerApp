@@ -33,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    //use this method for QrCodeScannerFragment, since this method is deprecated in fragments
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         //cant call this in fragment because its deprecated fragment.resultBoys();

@@ -60,6 +60,7 @@ public class DetailedInfoFragment extends Fragment {
         makingOffBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //navigate to the making off fragment
                 Utils.navigateToNewFragment(root.getContext(), R.id.navigation_making_off);
             }
         });
@@ -68,7 +69,22 @@ public class DetailedInfoFragment extends Fragment {
         return root;
     }
 
-
+    /**
+     *  set up data for the detailed fragment view
+     * @param context
+     * @param infoNumber
+     * @param q1
+     * @param a1
+     * @param q2
+     * @param a2
+     * @param q3
+     * @param a3
+     * @param q4
+     * @param a4
+     * @param title
+     * @param subtitle
+     * @param image
+     */
     private void setupText(Context context, int infoNumber, TextView q1, TextView a1,
                            TextView q2, TextView a2,
                            TextView q3, TextView a3,
