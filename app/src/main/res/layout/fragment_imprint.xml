@@ -113,8 +113,8 @@
             android:paddingBottom="@dimen/imprint_bottom_text_padding"/>
 
         <ImageView
-            android:layout_width="125dp"
-            android:layout_height="50dp"
+            android:layout_width="@dimen/logo_height"
+            android:layout_height="@dimen/logo_width"
             android:background="@drawable/logo"
             app:layout_constraintTop_toTopOf="@id/imprint_header_01"
             app:layout_constraintBottom_toBottomOf="@id/imprint_header_01_underscore"

@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/navigation_start"
-        android:name="com.example.elevent.ui.start.StartFragment"
+        android:name="com.example.qrcodescannerevent.ui.start.StartFragment"
         tools:layout="@layout/fragment_start" >
         <action
             android:id="@+id/action_navigation_start_self"
@@ -16,7 +16,7 @@
 
     <fragment
         android:id="@+id/navigation_info"
-        android:name="com.example.elevent.ui.info.InfoFragment"
+        android:name="com.example.qrcodescannerevent.ui.info.InfoFragment"
         tools:layout="@layout/fragment_info">
         <action
             android:id="@+id/showMoreInfoAction"
@@ -25,7 +25,7 @@
 
     <fragment
         android:id="@+id/navigation_game"
-        android:name="com.example.elevent.ui.game.GameFragment"
+        android:name="com.example.qrcodescannerevent.ui.game.GameFragment"
         android:label="@string/title_game"
         tools:layout="@layout/fragment_game">
         <argument
@@ -37,17 +37,17 @@
 
     <fragment
         android:id="@+id/navigation_map"
-        android:name="com.example.elevent.ui.map.MapFragment"
+        android:name="com.example.qrcodescannerevent.ui.map.MapFragment"
         tools:layout="@layout/fragment_map" />
 
     <fragment
         android:id="@+id/navigation_imprint"
-        android:name="com.example.elevent.ui.imprint.ImprintFragment"
+        android:name="com.example.qrcodescannerevent.ui.imprint.ImprintFragment"
         tools:layout="@layout/fragment_imprint" />
 
     <fragment
         android:id="@+id/detailed_info_fragment"
-        android:name="com.example.elevent.ui.info.DetailedInfoFragment"
+        android:name="com.example.qrcodescannerevent.ui.info.DetailedInfoFragment"
         tools:layout="@layout/fragment_detailed_info">
         <argument
             android:name="info_item_number"
@@ -57,12 +57,12 @@
 
     <fragment
         android:id="@+id/navigation_making_off"
-        android:name="com.example.elevent.ui.info.MakingOffFragment"
+        android:name="com.example.qrcodescannerevent.ui.info.MakingOffFragment"
         tools:layout="@layout/fragment_making_off" />
 
     <fragment
         android:id="@+id/navigation_qr_code_scanner"
-        android:name="com.example.elevent.ui.game.QrCodeScannerFragment"
+        android:name="com.example.qrcodescannerevent.ui.game.QrCodeScannerFragment"
         tools:layout="@layout/fragment_qr_code_scanner">
         <action
             android:id="@+id/openDialogAction"

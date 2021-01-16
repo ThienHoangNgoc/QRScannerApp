@@ -4,13 +4,23 @@
     <color name="colorPrimaryDark">#3700B3</color>
     <color name="colorAccent">#03DAC5</color>
 
-    <color name="main_color">#EF4770</color>
+    <color name="main_color">#008374</color>
+
+    <!-- navigation -->
+    <color name="bottom_navigation_text_activated_color">#FFFFFF</color>
+    <color name="bottom_navigation_text_not_activated_color">#FFFFFF</color>
 
     <!-- general colors -->
     <color name="transparent">#00FFFFFF</color>
     <color name="transparent_25">#40FFFFFF</color>
     <color name="transparent_50">#80FFFFFF</color>
     <color name="transparent_75">#BFFFFFFF</color>
+
+    <!-- info item -->
+    <color name="info_icon_color_01">#78BF53</color>
+    <color name="info_icon_color_02">#CA6F00</color>
+    <color name="info_icon_color_03">#FFE120</color>
+    <color name="info_icon_color_04">#3C14AA</color>
 
 
     <!-- map -->
