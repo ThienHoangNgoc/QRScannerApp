@@ -8,7 +8,11 @@
     <fragment
         android:id="@+id/navigation_start"
         android:name="com.example.elevent.ui.start.StartFragment"
-        tools:layout="@layout/fragment_start" />
+        tools:layout="@layout/fragment_start" >
+        <action
+            android:id="@+id/action_navigation_start_self"
+            app:destination="@id/navigation_start" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_info"
