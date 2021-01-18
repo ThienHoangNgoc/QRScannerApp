@@ -124,7 +124,7 @@
     <Button
         android:id="@+id/submit_answer_btn"
         android:layout_width="@dimen/submit_btn_width"
-        android:layout_height="@dimen/scan_btn_height"
+        android:layout_height="@dimen/submit_btn_height"
         android:background="@drawable/submit_answer_btn"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintRight_toRightOf="@id/v_guide_line_02"
