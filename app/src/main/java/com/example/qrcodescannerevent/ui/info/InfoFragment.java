@@ -74,6 +74,13 @@ public class InfoFragment extends Fragment {
             dataSet.add(infoItem_02);
             dataSet.add(infoItem_03);
             dataSet.add(infoItem_04);
+
+            //adding more data for showcase purpose
+            dataSet.add(infoItem_01);
+            dataSet.add(infoItem_02);
+            dataSet.add(infoItem_03);
+            dataSet.add(infoItem_04);
+
         }
 
 

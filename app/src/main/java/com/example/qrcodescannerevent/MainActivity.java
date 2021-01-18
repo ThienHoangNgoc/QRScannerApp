@@ -30,7 +30,6 @@ public class MainActivity extends AppCompatActivity {
         navView.setItemIconTintList(null);
         navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupWithNavController(navView, navController);
-
     }
 
     //use this method for QrCodeScannerFragment, since this method is deprecated in fragments
