@@ -43,7 +43,7 @@ public class QrCodeScannerFragment extends Fragment {
                     public void run() {
                         //if the scan was successful put the result into safe arg bundle to use it in the directed fragment (GameFragment)
                         //this is used to pass data to the new fragment, which is navigated to
-                        //Tool tip: to test qr code scanner scan qr code images in drawables (qr_code_image_01.png, qr_code_image_02.png, ...)
+                        //Tool tip: to test QrCodeScannerFragment scan qr code images in drawables (qr_code_image_01.png, qr_code_image_02.png, ...)
                         QrCodeScannerFragmentDirections.OpenDialogAction action = QrCodeScannerFragmentDirections.openDialogAction();
                         action.setQrCode(result.getText());
                         Navigation.findNavController(root).navigate(action);
